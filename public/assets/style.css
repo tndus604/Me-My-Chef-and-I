@@ -1,0 +1,62 @@
+ html {
+    margin:0; 
+    padding:0; 
+    box-sizing: border-box;
+    height: 100%;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+    background: rgb(232, 224, 223);
+}
+
+.title-logo{
+    padding-left: 20px;
+    font-family: 'Chewy', cursive;
+    /* font-family: 'Fredoka One', cursive; */
+    font-size: 30px;
+}
+
+nav {
+    background-color: rgb(221, 134, 117);
+}
+
+.jumbotron {
+    font-family: 'Fredoka One', cursive;
+    background-image: url("https://www.helpguide.org/wp-content/uploads/table-with-grains-vegetables-fruit-768.jpg");
+    color: white;
+    text-shadow: 1px 0px 10px rgb(0, 0, 0);
+    background-size: cover;
+    background-color: white;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+    padding-top: 10%;
+}
+
+.main-menu {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.contentImg {
+    height: 200px;
+}
+
+footer {
+    background-color: rgb(221, 134, 117);
+    color: white;
+    width: 100%;
+    padding: 15px 30px;
+    margin-top: 100px;  
+    margin-bottom: 0;
+    bottom: 0px;
+    left: 0px;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* @media  */
