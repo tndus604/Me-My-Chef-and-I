@@ -7,7 +7,9 @@
 
 body {
     font-family: 'Titillium Web', sans-serif;
+    /* font-family: 'Fredoka One', cursive; */
     background: rgb(232, 224, 223);
+    color: rgb(71, 69, 69);
 }
 
 .title-logo{
