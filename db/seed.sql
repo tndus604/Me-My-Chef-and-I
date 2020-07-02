@@ -1,0 +1,1 @@
+INSERT INTO food (items, quantity) VALUES ("onion", "4"), ("egg", "6"), ("cheese","10");
