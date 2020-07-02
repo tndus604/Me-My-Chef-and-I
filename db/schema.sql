@@ -1,0 +1,10 @@
+# Schema
+DROP DATABASE IF EXISTS fridge_db;
+CREATE DATABASE fridge_db;
+USE fridge_db;
+
+CREATE TABLE food (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    items VARCHAR(50) NOT NULL,
+    quantity INT NOT NULL
+);
