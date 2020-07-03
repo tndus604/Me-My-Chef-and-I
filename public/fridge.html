@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Me My Chef and I</title>
+    <title>Fridge Ingredients</title>
     <!-- font awesome link -->
     <script src="https://kit.fontawesome.com/6982aca92a.js" crossorigin="anonymous"></script>
     <!-- boostrap link -->
@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka+One&family=Titillium+Web&display=swap" rel="stylesheet">
     <!-- local css link -->
     <link href="assets/style.css" rel="stylesheet">
+    <!-- any NPM packages you want to include, you can directly include like this -->
+    <script src="https://unpkg.com/moment"></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -34,57 +36,31 @@
             </li>
           </ul>
         </div>
-      </nav>
+    </nav>
 
-    <!-- Main Page Jumbotron  -->
-    <div id="closeFridge" class="jumbotron text-center">
-        <h1 class="display-4">What's for dinner tonight?</h1>
-        <p class="lead">Add some description</p>
-        <br>
-        <!-- <a class="btn btn-primary btn-lg fridge-button" href="#" role="button" onclick="checkFridge()">Check Your Fridge</a> -->
-    </div>
-    <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-6 text-center main-menu">
-              <a class="clickable" href="#"><img class="contentImg" src="./assets/refrigerator.png"></a>
-              <p>What is in your fridge?</p>
-          </div>
-          <div class="col-sm-12 col-md-6 text-center main-menu">
-              <a href="#"><img class="contentImg" src="./assets/notebook.png"></a>
-              <p>Find recipe based on your ingredients</p>
-          </div>
-        </div>
-    </div>
-
-    <div id="openFridge" class="jumbotron text-center" style="display: none">
-        <h1 class="display-4">Me MyChef and I</h1>
-        <!-- <hr class="my-4"> -->
-        <img src="./assets/fridge2.jpg">
-    </div>
-
-
-<!-- Show Items In Fridge -->
-    <ul id=fridgeItems class="list-group, container-fluid" style="display: none">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Butter
-          <span class="badge badge-primary badge-pill">1</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Cheese
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Eggs
-          <span class="badge badge-primary badge-pill">4</span>
-        </li>
-    </ul>
-
-    <!-- $sql = "SELECT items, quantity, is_rotten FROM fo" -->
     
-    <footer class="footer">
-      <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
-    </footer>
+        <div class="row text-center">
+            <div class="col-sm-12 col-md-6 text-center">
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-carrot"></i></button><br>Vegitables</div>
+                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-apple-alt"></i></button><br>Fruits</div>
+                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-cheese"></i></button><br>Dairy</div>
+                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-drumstick-bite"></i></button><br>Meat</div>
+                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-fish"></i></button><br>Fish</div>
+                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-shopping-basket"></i></button><br>Other Groceries</div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 text-center">
+              <img src="./assets/fridge3.png" style="height: 50px;"><span style="font-size: 30px; padding-top: 10px;">Your Fridge</span>
+            </div>
+        </div>
+    
 
+
+    <footer class="footer">
+        <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
+    </footer>
+  
     <script src="./assets/script.js"></script>
-</body> 
+</body>
 </html>
