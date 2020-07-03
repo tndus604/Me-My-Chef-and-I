@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-INSERT INTO food (items, quantity) VALUES ("onion", "4"), ("egg", "6"), ("cheese","10");
-=======
-INSERT INTO food (category, item) VALUES ("vegetable", "onion"), ("vegetable", "green onion"), ("vegetable","carrot");
->>>>>>> Haley
+INSERT INTO food (category, item, image_url) VALUES ("meat", "Chicken", "https://icons.iconarchive.com/icons/lemon-liu/recipes/256/recipe-chicken-icon.png"), ("meat", "Beef", "https://img.icons8.com/cotton/2x/steak.png"), ("meat","Pork","https://eat-pregnant.com/wp-content/uploads/2019/06/mangerviande9.png"), ("meat", "Bacon", "https://images.vexels.com/media/users/3/212884/isolated/lists/887975edd462a66c9ac3a43ff114840d-simple-bacon-icon-flat.png"), ("meat", "Sausage", "https://cdn.iconscout.com/icon/premium/png-256-thumb/sausage-1509824-1275114.png"), ("meat","Lamb", "https://cdn.iconscout.com/icon/premium/png-256-thumb/mutton-2110992-1777904.png"), ("meat", "Turkey", "https://cdn.iconscout.com/icon/premium/png-256-thumb/turkey-1400395-1185967.png");

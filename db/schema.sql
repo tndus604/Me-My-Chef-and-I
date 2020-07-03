@@ -5,13 +5,10 @@ USE fridge_db;
 
 CREATE TABLE food (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-<<<<<<< HEAD
-    items VARCHAR(50) NOT NULL,
-    quantity INT NOT NULL
-=======
-    category ENUM('vegetable', 'fruit', 'dairy', 'meat', 'fish', 'others') DEFAULT 'others',
+    category ENUM('vegetable', 'fruit', 'dairy', 'meat', 'seafood', 'others') DEFAULT 'others',
     item VARCHAR(50) NOT NULL,
     is_rotten BOOLEAN DEFAULT FALSE,
+    quantity INT DEFAULT 5,
     image_url TEXT NOT NULL
->>>>>>> Haley
+
 );
