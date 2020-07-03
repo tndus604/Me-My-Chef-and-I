@@ -1,1 +1,1 @@
-INSERT INTO food (category, item) VALUES ("vegetable", "onion"), ("vegetable", "green onion"), ("vegetable","carrot");
+INSERT INTO food (category, item, image_url) VALUES ("vegetable", "onion", "https://pbs.twimg.com/profile_images/697579658494103553/_MxTOFWw_400x400.jpg"), ("vegetable", "green onion", "https://images.freshop.com/8215695/c6c61545ead2df52626bc5a7c4525aec_medium.png"), ("vegetable","carrot", );
