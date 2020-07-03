@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fridge Ingredients</title>
+    <title>Recipes</title>
     <!-- font awesome link -->
     <script src="https://kit.fontawesome.com/6982aca92a.js" crossorigin="anonymous"></script>
     <!-- boostrap link -->
@@ -16,11 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka+One&family=Titillium+Web&display=swap" rel="stylesheet">
     <!-- local css link -->
     <link href="assets/style.css" rel="stylesheet">
-    <!-- any NPM packages you want to include, you can directly include like this -->
-    <script src="https://unpkg.com/moment"></script>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand title-logo" href="#" style="color: white;"><i class="fas fa-utensils"></i> Me MyChef & I</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,29 +35,51 @@
         </div>
     </nav>
 
-    
-        <div class="row text-center">
-            <div class="col-sm-12 col-md-6 text-center">
-                <div class="row">
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-carrot"></i></button><br>Vegitables</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-apple-alt"></i></button><br>Fruits</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-cheese"></i></button><br>Dairy</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-drumstick-bite"></i></button><br>Meat</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-fish"></i></button><br>Fish</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-shopping-basket"></i></button><br>Other Groceries</div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 text-center">
-              <img src="./assets/fridge3.png" style="height: 50px;"><span style="font-size: 30px; padding-top: 10px;">Your Fridge</span>
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="ingredientInput" class="form-control form-control-lg">
+            <div class="input-group-append">
+                <button id="searchBtn" type="submit" class="btn btn-warning">Search</button>
             </div>
         </div>
-    
+        <ul id="showResult">
+            
 
+        </ul>
+    </div>
+
+    
 
     <footer class="footer">
         <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
     </footer>
   
     <script src="./assets/script.js"></script>
+    <script>
+        var ingredient = ('#incredientInput').value;
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ignorePantry=false&ingredients=${ingredient}`,
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+                "x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
+            }
+        }
+
+// $.ajax(settings).done(function (response) {
+//     console.log(response);
+//     console.log(response[0].title);
+// });
+
+        function showData() {
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                var recipeResult = document.querySelector("#recipeResult");
+                recipeResult.innerHTML += response[0].title;
+            });
+        }
+    </script>
 </body>
 </html>
