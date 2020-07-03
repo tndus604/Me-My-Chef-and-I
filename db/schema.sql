@@ -10,3 +10,4 @@ CREATE TABLE food (
     is_rotten BOOLEAN DEFAULT FALSE,
     image_url TEXT NOT NULL
 );
+
