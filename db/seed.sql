@@ -9,12 +9,12 @@ INSERT INTO food (category, item, image_url) VALUES
 ("dairy", "Ice cream", "https://photos.bigoven.com/recipe/hero/ice-cream-base-3c7013.jpg?h=300&w=300");
 
 INSERT INTO food (category, item, image_url) VALUES 
-("meat", "Chicken", "https://icons.iconarchive.com/icons/lemon-liu/recipes/256/recipe-chicken-icon.png"), ("meat", "Beef", "https://img.icons8.com/cotton/2x/steak.png"), 
-("meat","Pork","https://eat-pregnant.com/wp-content/uploads/2019/06/mangerviande9.png"), 
+("meat", "Chicken", "https://ih1.redbubble.net/image.481444314.5190/flat,128x,075,f-pad,128x128,f8f8f8.u4.jpg"), ("meat", "Beef", "https://www.emojirequest.com/images/SteakEmoji.jpg"), 
+("meat","Pork","https://cdn.shopify.com/s/files/1/1222/1336/products/berrymanfarms-shoulder-butt-roast-boneless-approx-3-lbs-ea-10895180417_350x350_crop_center.jpg?v=1569208018"), 
 ("meat", "Bacon", "https://photos.bigoven.com/recipe/hero/turkey-bacon-2.jpg?h=300&w=300"), 
-("meat", "Sausage", "https://cdn.iconscout.com/icon/premium/png-256-thumb/sausage-1509824-1275114.png"), 
-("meat","Lamb", "https://cdn.iconscout.com/icon/premium/png-256-thumb/mutton-2110992-1777904.png"), 
-("meat", "Turkey", "https://cdn.iconscout.com/icon/premium/png-256-thumb/turkey-1400395-1185967.png");
+("meat", "Sausage", "https://bigoven-res.cloudinary.com/image/upload/t_recipe-256/sausages-2353194.jpg"), 
+("meat","Lamb", "https://ipcdn.freshop.com/resize?url=https://images.freshop.com/00213014000007/0595bbdaa1df5ff85c4485dd8998b4f5_large.png&width=256&type=webp&quality=40"), 
+("meat", "Turkey", "https://s3-ap-southeast-1.amazonaws.com/com.meenaclick.v2.inst.01/product_variances/images/2020/apr/28/17/c843c9c5-a386-469b-a4e4-5ada51c4460f.lg.jpg");
 
 INSERT INTO food (category, item, image_url) VALUES 
 ("seafood", "Salmon", "https://gamepedia.cursecdn.com/arksurvivalevolved_gamepedia/9/98/Raw_Prime_Fish_Meat.png"),
@@ -41,17 +41,17 @@ INSERT INTO food (category, item, image_url) VALUES
 ("vegetable", "Garlic", "https://pbs.twimg.com/profile_images/723146614114779136/ZNuJHu5t_400x400.jpg");
 
 INSERT INTO food (category, item, image_url) VALUES 
-("fruit", "Apples", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSsF163curMEJbJW9NRD4dOgJSxhzeLouANkA&usqp=CAU%22"),
-("fruit", "Oranges", "https://cdn.iconscout.com/icon/free/png-256/tangerine-orange-fruit-emoj-symbol-food-30688.png%22"),
-("fruit", "Pairs", "https://images.vexels.com/media/users/3/185258/isolated/lists/9a795ff4189d53ba2a05baf670567899-pear-fruit-flat.png%22"),
-("fruit", "Grapes", "https://vignette.wikia.nocookie.net/paradise-bay/images/3/39/Grapes.png/revision/latest?cb=20170328194757%22"),
-("fruit", "Banana", "https://vignette.wikia.nocookie.net/feed-your-pets-roblox/images/6/69/Banana.png/revision/latest?cb=20180503075351%22"),
-("fruit", "Tomatoes", "https://www.iconarchive.com/download/i107449/google/noto-emoji-food-drink/32356-tomato.ico%22"),
-("fruit", "Watermelon","https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/watermelon.png%22"),
-("fruit", "Grapefruit", "https://images.vexels.com/media/users/3/185221/isolated/lists/195bce39ce514728263550006f9e3934-grapefruit-sliced-flat.png%22"),
-("fruit", "Mangoes", "https://cdn.iconscout.com/icon/premium/png-256-thumb/mango-1974939-1665091.png%22"),
-("fruit", "Peaches", "https://i.pinimg.com/originals/99/72/90/99729056e09a0c854cb66fcfe2acbfe4.png%22"),
-("fruit", "Plums", "https://cdn.iconscout.com/icon/premium/png-256-thumb/plum-20-565327.png%22");
+("fruit", "Apple", "https://i.pinimg.com/originals/24/b0/36/24b0365effe36e3a718dd8dbb44ead6a.png"),
+("fruit", "Orange", "https://pluspng.com/img-png/orange-png-orange-png-image-free-download-256.png"),
+("fruit", "Pair", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRbCoWq3kQVa8pp9q7vKvOnvIav7pgs5C_5HQ&usqp=CAU"),
+("fruit", "Grapes", "https://a.wattpad.com/useravatar/Grapes15th.256.860644.jpg"),
+("fruit", "Banana", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQQDXiL-EqqOuWCvj5dAj7hvVvLaAxJ4hAh_w&usqp=CAU"),
+("fruit", "Tomato", "https://www.kampexport.com/sites/kampexport.com/files/images/legume/image/tomates_256_1.jpg"),
+("fruit", "Watermelon","https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS2516yxwLnJaA7cstSv9XWxKCv7_p2VJU3Fg&usqp=CAU"),
+("fruit", "Grapefruit", "https://photos.bigoven.com/recipe/hero/drink-fresh-grapefruit-juice-w-2b904f.jpg?h=300&w=300"),
+("fruit", "Mango", "https://pbs.twimg.com/profile_images/702112096109121536/xAPaPWiM_400x400.jpg"),
+("fruit", "Peach", "https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/peach.png"),
+("fruit", "Plum", "https://images.freshop.com/78509/80946f17b301b70d67e5777832ac3efc_medium.png");
 
 INSERT INTO food (category, item, image_url) VALUES
 ("others", "Bread", "https://gamepedia.cursecdn.com/arksurvivalevolved_gamepedia/9/9f/Baked_Bread_Loaf_%28Primitive_Plus%29.png"),
