@@ -155,7 +155,7 @@ function showData() {
 	$.ajax(settings).done(function (response) {
 		console.log(response);
 		var recipeResult = document.querySelector("#recipeResult");
-		// recipeResult.innerHTML = "";
+		recipeResult.innerHTML = "";
 		for (i=0 ; i<response.length; i++) {
 			var recipeID = response[i].id;
 			recipeResult.innerHTML += `
