@@ -6,11 +6,6 @@
 //     openFridge.style.display = "block";
 //     closeFridge.style.display = "none";
 // }
-<<<<<<< HEAD
-async function apiCall(url, method='get', data={}){
-    let settings = { method, headers: { 'Content-Type': 'application/json' } }
-
-=======
 
 
 /* unlike node where we can pull in packages with npm, or react, for normal
@@ -27,54 +22,10 @@ async function apiCall( url, method='get', data={} ){
         headers: { 'Content-Type': 'application/json' }
     }
     // only attach the body for put/post
->>>>>>> Haley
     if( method === 'post' || method === 'put' ) {
         settings.body = JSON.stringify( data )
     }
 
-<<<<<<< HEAD
-    const result = await fetch( url, settings ).then( res=>res.json() );
-    return result
-}
-
-    /* put the api result message onto the screen as a message if it exists */
-    // if( result.status && result.message ){
-    //     const apiResultEl = document.querySelector('#apiMessage')
-    //     apiResultEl.innerHTML = result.message
-    //     apiResultEl.classList.remove( 'd-none' )
-    //     console.log( 'showing message: '+ result.message )
-    //     setTimeout( function(){
-    //         apiResultEl.classList.add( 'd-none' )
-    //     }, 5000 )
-    // } else if( !result.status && result.message ){
-    //     alert( 'Problems: ' + result.message )
-    // }
-
-let vegiBtnEl = document.querySelector('.vige-btn');
-
-async function itemListByCatagory (id, category) {
-    category = id 
-
-    const itemList = await apiCall('/api/food' + (category ? `/${category}` : '' ));
-    console.log(itemList)
-
-    let listEl = document.querySelector('#list');
-    listEl.innerHTML = ''
-    itemList.forEach( function(foods){
-        listEl.innerHTML += 
-        `
-            <img class="item-image" src="${foods.image_url} alt=''/><span> ${foods.item}</span><br>
-        `
-    } )
-}
-
-async function showCategory (id){
-    itemListByCatagory(id);
-}
-// async function showIngredients( category='' ){
-//     const itemList = await apiCall( '/api/food' + (category ? `/${category}` : '') )
-//     // console.log( `[taskList] due='${due}'`, taskList )
-=======
     const result = await fetch( url,settings ).then( res=>res.json() )
 
     return result
@@ -100,31 +51,10 @@ async function itemList( category='' ) {
 // async function taskList( due='' ){
 //     const taskList = await apiCall( '/api/food' + (category ? `/${category}` : '') )
 //     console.log( `[taskList] due='${category}'`, taskList )
->>>>>>> Haley
 
 //     const listEl = document.querySelector('#list')
 //     listEl.innerHTML = ''
 
-<<<<<<< HEAD
-//     itemList.forEach( function( name ){
-//         listEl.innerHTML += `
-//         <li class="list-group-item">
-//             <div class="float-right p-0">
-//                 <button onClick="taskDelete(${name.id})" class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button>
-//             </div>
-//             <div class="todo-indicator"></div>
-//             <h3 class="text-primary">${name.item}</h3>
-//             <small class="text-muted">${name.category ? 'category: '+name.category : '' }</small>
-//         </li>
-//         `
-//     })
-//     showtable();
-// }
-
-// function showtable(){
-    
-// }
-=======
 //     taskList.forEach( function( task ){
 //         listEl.innerHTML += `
 //         <li class="list-group-item">
@@ -225,22 +155,23 @@ function showData() {
 	$.ajax(settings).done(function (response) {
 		console.log(response);
 		var recipeResult = document.querySelector("#recipeResult");
-		// recipeResult.innerHTML = "";
+		recipeResult.innerHTML = "";
 		for (i=0 ; i<response.length; i++) {
 			var recipeID = response[i].id;
 			recipeResult.innerHTML += `
 			<div class="col-sm-12 col-md-4">
 				<img src="${response[i].image}">
 			</div>
-			<div class="col-sm-12 col-md-8">
+            <div class="col-sm-12 col-md-8" id=''>
 				<p><strong>${response[i].title}</strong></p>
 				<button class="btn btn-primary" onClick="showInstruction(${recipeID})">Detail</button>
-				<ol id="showDetail"></ol>
+				<ol id="item${recipeID}"></ol>
 			</div>
 			`;
 		}
 	})
 }
+var clicks = 0;
 
 function showInstruction(recipeID) {
 	var settings = {
@@ -252,18 +183,30 @@ function showInstruction(recipeID) {
 			"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
 			"x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
 		}
-	}
+    }
 	$.ajax(settings).done(function (data) {
 		console.log(data);
-		var showDetail = document.querySelector('#showDetail');
-		showDetail.innerHTML = '';
-		for (var i=0; i<data.length; i++) {
-			for (var j=0; j<data[i].steps.length; j++) {
-				showDetail.innerHTML += `
-				<li>${data[i].steps[j].step}</li>
-				`
-			}
-		}
+		var showDetail = document.querySelector('#item'+recipeID);
+        showDetail.innerHTML = '';
+        
+        if (clicks % 2 === 0){
+            for (var i=0; i<data.length; i++) {
+                for (var j=0; j<data[i].steps.length; j++) {
+                    showDetail.innerHTML += `
+                    <li>${data[i].steps[j].step}</li>
+                    `
+                    // if( data.length = 0 ){
+                    //     showDetail.innerHTML += `No Instruction Available`
+                    //     console.log(`where is zero`)
+                    // }     NEED FIX*******************WHEN NO STEPS FOUND
+                }
+            }
+        }
+        else {
+            showDetail.innerHTML = ''
+        }
+		
+        clicks++
 	})
 }
->>>>>>> Haley
+
