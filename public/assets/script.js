@@ -160,17 +160,28 @@ function showData() {
 			var recipeID = response[i].id;
 			recipeResult.innerHTML += `
 			<div class="col-sm-12 col-md-4">
-				<img src="${response[i].image}">
+				<img src="${response[i].image ? `${response[i].image}` : ``}">
 			</div>
 			<div class="col-sm-12 col-md-8">
 				<p><strong>${response[i].title}</strong></p>
+				<ul>Missing Ingredients: 
+					${response[i].missedIngredients[0] ? `<li>${response[i].missedIngredients[0].name}` : ``}
+					${response[i].missedIngredients[1] ? `<li>${response[i].missedIngredients[1].name}` : ``}
+					${response[i].missedIngredients[2] ? `<li>${response[i].missedIngredients[2].name}` : ``}
+					${response[i].missedIngredients[3] ? `<li>${response[i].missedIngredients[3].name}` : ``}
+				</ul>
 				<button class="btn btn-primary" onClick="showInstruction(${recipeID})">Detail</button>
-				<ol id="showDetail"></ol>
+				<ol id="showDetail${recipeID}"></ol>
 			</div>
 			`;
 		}
 	})
 }
+
+{/* <br>Missing Ingredients: 
+${response[i].missedIngredients[0].name}, 
+${response[i].missedIngredients[1].name}, 
+${response[i].missedIngredients[2].name ? `${response[i].missedIngredients[2].name}` : ``}</p> */}
 
 function showInstruction(recipeID) {
 	var settings = {
@@ -185,7 +196,7 @@ function showInstruction(recipeID) {
 	}
 	$.ajax(settings).done(function (data) {
 		console.log(data);
-		var showDetail = document.querySelector('#showDetail');
+		var showDetail = document.querySelector('#showDetail'+recipeID);
 		showDetail.innerHTML = '';
 		for (var i=0; i<data.length; i++) {
 			for (var j=0; j<data[i].steps.length; j++) {
