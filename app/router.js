@@ -2,10 +2,10 @@ const orm = require('./orm');
 
 function router( app ){
     app.get('/api/food/:category?', async function(req, res) {
-        const foodCategory = req.params.category ? { category: req.params.category } : ''
-        console.log( `[GET] getting food categories, category=${foodCategory}`);
-        const listByCategory = await orm.showItem( foodCategory );
-
+        const category = req.params.category ? req.params.category : '';
+        console.log( `[GET] getting food categories, category=${category}`);
+        const listByCategory = await orm.showItem( category );
+        console.log( listByCategory )
         res.send( listByCategory );
     })
 

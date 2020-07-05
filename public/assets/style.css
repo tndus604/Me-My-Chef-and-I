@@ -24,6 +24,11 @@ body {
 
 nav {
     background-color: rgb(221, 134, 117);
+    overflow: hidden;
+    position: fixed;
+    /* top: 0; */
+    width: 100%;
+
 }
 
 .jumbotron {
@@ -65,4 +70,8 @@ footer {
     text-align: center;
 }
 
+.item-image{
+    width:20px;
+    height:20px;
+}
 /* @media  */

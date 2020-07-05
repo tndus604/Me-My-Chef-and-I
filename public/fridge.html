@@ -37,18 +37,66 @@
           </ul>
         </div>
     </nav>
+    <!-- <div class="col-3"><button id="vegetable" onclick="showCategory(this.id)" type="button" class="btn btn-dark vegi-btn"><i class="fas fa-carrot"></i></button><br>Vegitables</div>                   
+                  <div class="col-3"><button id="fruit" onclick="showCategory(this.id)" type="button" class="btn btn-dark fruit-btn"><i class="fas fa-apple-alt"></i></button><br>Fruits</div>
+                  <div class="col-3"><button id="dairy" onclick="showCategory(this.id)" type="button" class="btn btn-dark"><i class="fas fa-cheese"></i></button><br>Dairy</div>
+                  <div class="col-3"><button id="meat" onclick="showCategory(this.id)" type="button" class="btn btn-dark"><i class="fas fa-drumstick-bite"></i></button><br>Meat</div>
+                  <div class="col-3"><button id="seafood" onclick="showCategory(this.id)" type="button" class="btn btn-dark"><i class="fas fa-fish"></i></button><br>Seafood</div>
+                  <div class="col-3"><button id="others" onclick="showCategory(this.id)" type="button" class="btn btn-dark"><i class="fas fa-shopping-basket"></i></button><br>Other Groceries</div>
+                  <div class="col-12"> -->
+  <ul class="nav nav-pills mb-3 bg-light" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+    </li>
+  </ul>
+  <div class="tab-content bg-light" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  </div>
 
-    
-        <div class="row text-center">
+
+
+
+
+        <div class="row text-center" style="margin-top: 100px;">
+
             <div class="col-sm-12 col-md-6 text-center">
-                <div class="row">
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-carrot"></i></button><br>Vegitables</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-apple-alt"></i></button><br>Fruits</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-cheese"></i></button><br>Dairy</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-drumstick-bite"></i></button><br>Meat</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-fish"></i></button><br>Fish</div>
-                  <div class="col"><button type="button" class="btn btn-dark"><i class="fas fa-shopping-basket"></i></button><br>Other Groceries</div>
-                </div>
+              <ul class="nav nav-pills mb-3 bg-light" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a  class="nav-link active" id="vegetable" onclick="showCategory(this.id)" data-toggle="pill" href="#list" role="tab" aria-controls="pills-home" aria-selected="true">Vegetable</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="fruit" onclick="showCategory(this.id)" data-toggle="pill" href="#list" role="tab" aria-controls="pills-profile" aria-selected="false">Fruits</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="dairy" onclick="showCategory(this.id)" data-toggle="pill" href="#list" role="tab" aria-controls="pills-contact" aria-selected="false">Dairy</a>
+                </li>
+              </ul>
+              <div class="tab-content bg-light " id="pills-tabContent">
+                <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="pills-home-tab">one</div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">two</div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">three</div>
+              </div>
+                <!-- <div class="row">
+                  <div class="col-3"><button id="vegetable" onclick="showCategory(this.id)" type="button" class="btn btn-dark vegi-btn"><i class="fas fa-carrot"></i></button><br>Vegitables</div>                   
+                  <div class="col-3"><button id="fruit" onclick="showCategory(this.id)" type="button" class="btn btn-dark fruit-btn"><i class="fas fa-apple-alt"></i></button><br>Fruits</div>
+                  <div class="col-3"><button id="dairy" onclick="showCategory(this.id)" type="button" class="btn btn-dark"><i class="fas fa-cheese"></i></button><br>Dairy</div>
+                  <div class="col-3"><button id="meat" onclick="showCategory(this.id)" type="button" class="btn btn-dark"><i class="fas fa-drumstick-bite"></i></button><br>Meat</div>
+                  <div class="col-3"><button id="seafood" onclick="showCategory(this.id)" type="button" class="btn btn-dark"><i class="fas fa-fish"></i></button><br>Seafood</div>
+                  <div class="col-3"><button id="others" onclick="showCategory(this.id)" type="button" class="btn btn-dark"><i class="fas fa-shopping-basket"></i></button><br>Other Groceries</div> -->
+                  <!-- <div class="col-12">
+                    <ul id="list fixed-center">
+                      
+                    </ul>
+                  </div> -->
+                <!-- </div> -->
             </div>
             <div class="col-sm-12 col-md-6 text-center">
               <img src="./assets/fridge3.png" style="height: 50px;"><span style="font-size: 30px; padding-top: 10px;">Your Fridge</span>
