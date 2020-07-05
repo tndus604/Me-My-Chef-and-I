@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka+One&family=Titillium+Web&display=swap" rel="stylesheet">
     <!-- local css link -->
     <link href="assets/style.css" rel="stylesheet">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -36,16 +38,12 @@
     </nav>
 
     <div class="container">
-        <div class="input-group">
-            <input type="text" id="ingredientInput" class="form-control form-control-lg">
-            <div class="input-group-append">
-                <button id="searchBtn" type="submit" class="btn btn-warning">Search</button>
-            </div>
+        <p>What is in your fridge?</p>
+        <input class="form-control" id="ingredientInput" type="text"><button onclick="showData()">Add</button>
+    
+        <div id="recipeResult" class="row">
+    
         </div>
-        <ul id="showResult">
-            
-
-        </ul>
     </div>
 
     
@@ -55,31 +53,5 @@
     </footer>
   
     <script src="./assets/script.js"></script>
-    <script>
-        var ingredient = ('#incredientInput').value;
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ignorePantry=false&ingredients=${ingredient}`,
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-                "x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
-            }
-        }
-
-// $.ajax(settings).done(function (response) {
-//     console.log(response);
-//     console.log(response[0].title);
-// });
-
-        function showData() {
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-                var recipeResult = document.querySelector("#recipeResult");
-                recipeResult.innerHTML += response[0].title;
-            });
-        }
-    </script>
 </body>
 </html>

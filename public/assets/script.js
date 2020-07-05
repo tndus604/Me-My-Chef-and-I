@@ -139,3 +139,60 @@ async function itemList( category='' ) {
 //         taskList()
 //     }
 // }
+
+function showData() {
+	var ingredient = document.querySelector("#ingredientInput").value.toLowerCase();
+	var settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ignorePantry=false&ingredients=${ingredient}`,
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+			"x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
+		}
+	}
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+		var recipeResult = document.querySelector("#recipeResult");
+		// recipeResult.innerHTML = "";
+		for (i=0 ; i<response.length; i++) {
+			var recipeID = response[i].id;
+			recipeResult.innerHTML += `
+			<div class="col-sm-12 col-md-4">
+				<img src="${response[i].image}">
+			</div>
+			<div class="col-sm-12 col-md-8">
+				<p><strong>${response[i].title}</strong></p>
+				<button class="btn btn-primary" onClick="showInstruction(${recipeID})">Detail</button>
+				<ol id="showDetail"></ol>
+			</div>
+			`;
+		}
+	})
+}
+
+function showInstruction(recipeID) {
+	var settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeID}/analyzedInstructions?stepBreakdown=false`,
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+			"x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
+		}
+	}
+	$.ajax(settings).done(function (data) {
+		console.log(data);
+		var showDetail = document.querySelector('#showDetail');
+		showDetail.innerHTML = '';
+		for (var i=0; i<data.length; i++) {
+			for (var j=0; j<data[i].steps.length; j++) {
+				showDetail.innerHTML += `
+				<li>${data[i].steps[j].step}</li>
+				`
+			}
+		}
+	})
+}
