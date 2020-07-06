@@ -11,7 +11,7 @@ function router( app ){
 
     app.post('/api/food', async function(req, res) {
         console.log( '[POST] we received this data:', req.body )
-        const saveResult = await orm.addItem( req.body.item, req.body.category, req.body.quantity, req.body.img_url )
+        const saveResult = await orm.addItem( req.body.item, req.body.category, req.body.quantity, req.body.image_url )
         console.log( `... insertId: ${saveResult.insertId} ` )
 
         res.send( { status: true, insertId: saveResult.insertId, message: 'Saved successfully' } )

@@ -41,12 +41,35 @@ async function itemList( category='' ) {
         renderItem.innerHTML += `
         <div class="col-3">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-        <button class="btn" onclick="itemAdd(${data.id})">${data.item}</button>
+        <button class="btn" onclick="moveItem(${data.id})">${data.item}</button>
         </div>
         `
     })
 }
 
+async function addItem(event) {
+	event.preventDefault()
+	
+	const newItem = {
+		category: document.querySelector('#category').value,
+		item: document.querySelector('#itemName').value,
+		quantity: document.querySelector('#quantity').value,
+		image_url: document.querySelector('#image_url').value
+	}
+
+	document.querySelector('#category').value = ''
+	document.querySelector('#itemName').value = ''
+	document.querySelector('#quantity').value = ''
+	document.querySelector('#image_url').value = ''
+	console.log('[addItem] itemData =', newItem);
+
+	const saveResponse = await apiCall('/api/food', 'POST', newItem)
+	console.log('[saveResponse]', saveResponse)
+
+	if(saveResponse.status) {
+		itemList(category='')
+	}
+}
 
 
 // ------------------------Spoonacular API-------------------------------
