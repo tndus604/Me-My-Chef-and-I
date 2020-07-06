@@ -41,15 +41,37 @@ async function itemList( category='' ) {
         renderItem.innerHTML += `
         <div class="col-3">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-        <button class="btn" onclick="itemAdd(${data.id})">${data.item}</button>
+        <button class="btn" onclick="moveItem(${data.id})">${data.item}</button>
         </div>
         `
     })
 }
 
-async function addItem(data,id){
-	const itemAdd = await apiCall('/api/inFridge')
-	console.log(`[addItem] `) 
+async function addItem(event) {
+	event.preventDefault()
+	
+	const newItem = {
+		category: document.querySelector('#category').value,
+		item: document.querySelector('#itemName').value,
+		quantity: document.querySelector('#quantity').value,
+		image_url: document.querySelector('#image_url').value
+	}
+
+	document.querySelector('#category').value = '';
+	document.querySelector('#itemName').value = '';
+	document.querySelector('#quantity').value = '';
+	document.querySelector('#image_url').value = '';
+	if (!newItem.image_url){
+        newItem.image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSd2ZSGjR-kIYsWVqqgYJH5g-Aowx8abKcADw&usqp=CAU'
+    }
+	console.log('[addItem] itemData =', newItem);
+
+	const saveResponse = await apiCall('/api/food', 'post', newItem)
+	console.log('[saveResponse]', saveResponse)
+
+	if(saveResponse.status) {
+		itemList(newItem.category)
+	}
 }
 
 
