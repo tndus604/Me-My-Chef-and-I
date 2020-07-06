@@ -1,6 +1,9 @@
 const mysql = require('mysql');
 // an external npm package we are using
+<<<<<<< HEAD
 // const moment = require('moment');
+=======
+>>>>>>> master
 
 class Database {
     constructor( config ) {
@@ -46,7 +49,7 @@ function showItem(category) {
 }
 
 function addItem(item, category, quantity, url ){
-    return db.query( 'INSERT INTO food (item, category, quantity, img_url) VALUES (?,?,?,?)', [item, category, quantity, url] );
+    return db.query( 'INSERT INTO food (category, item, quantity, img_url) VALUES (?,?,?,?)', [item, category, quantity, url] );
 }
 
 function removeItem(id){

@@ -16,70 +16,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka+One&family=Titillium+Web&display=swap" rel="stylesheet">
     <!-- local css link -->
     <link href="assets/style.css" rel="stylesheet">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand title-logo" href="#" style="color: white;"><i class="fas fa-utensils"></i> Me MyChef & I</a>
+        <a class="navbar-brand title-logo" href="index.html" style="color: white;"><i class="fas fa-utensils"></i> Me MyChef & I</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Recipe</a>
+              <a class="nav-link" href="recipe.html">Recipe</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Check Your Fridge</a>
+              <a class="nav-link" href="fridge.html">Check Your Fridge</a>
             </li>
           </ul>
         </div>
     </nav>
 
     <div class="container">
-        <div class="input-group">
-            <input type="text" id="ingredientInput" class="form-control form-control-lg">
-            <div class="input-group-append">
-                <button id="searchBtn" type="submit" class="btn btn-warning">Search</button>
-            </div>
+        <p>What is in your fridge?</p>
+        <div class="input-group mb-3">
+          <input type="text" id="ingredientInput" class="form-control" placeholder="Type ingredients">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" onclick="showData()">Search</button>
+          </div>
         </div>
-        <ul id="showResult">
-            
-
-        </ul>
-    </div>
-
     
-
+        <div id="recipeResult" class="row">
+    
+        </div>
+    </div>
     <footer class="footer">
-        <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
+      <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
     </footer>
+
   
     <script src="./assets/script.js"></script>
-    <script>
-        var ingredient = ('#incredientInput').value;
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ignorePantry=false&ingredients=${ingredient}`,
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-                "x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
-            }
-        }
-
-// $.ajax(settings).done(function (response) {
-//     console.log(response);
-//     console.log(response[0].title);
-// });
-
-        function showData() {
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-                var recipeResult = document.querySelector("#recipeResult");
-                recipeResult.innerHTML += response[0].title;
-            });
-        }
-    </script>
 </body>
 </html>
