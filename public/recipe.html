@@ -39,18 +39,21 @@
 
     <div class="container">
         <p>What is in your fridge?</p>
-        <input class="form-control" id="ingredientInput" type="text"><button onclick="showData()">Add</button>
+        <div class="input-group mb-3">
+          <input type="text" id="ingredientInput" class="form-control" placeholder="Type ingredients">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" onclick="showData()">Search</button>
+          </div>
+        </div>
     
         <div id="recipeResult" class="row">
     
         </div>
     </div>
-
-    
-
     <footer class="footer">
-        <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
+      <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
     </footer>
+
   
     <script src="./assets/script.js"></script>
 </body>
