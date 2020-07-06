@@ -22,16 +22,21 @@ function router( app ){
         res.send( { status: true, insertId: saveResult.insertId, message: 'Saved successfully' } )
     });
 
-    app.put('/api/food', async function(req, res) {
-        console.log( '[PUT] we received this data:', req.body )
-        if( !req.body.id ) {
-            res.status(404).send( { message: 'Invalid id' } )
-        }
+    app.get('/api/food/ingredient/:id', async function(req, res) {
+        const foodId = req.params.id;
+        console.log(`[GET] putting food into fridge, id=${foodId}`);
+        const listById = await orm.moveItem(foodId);
 
-        const saveResult = await orm.updateItem( req.body.id, req.body.item, req.body.category, req.body.quantity, req.body.img_url )
-        console.log( '... ', saveResult )
-        res.send( { status: true, message: 'Updated successfully' } )
+        res.send( listById );
     });
+
+    // app.post('/api/fridge', async function(req, res) {
+    //     console.log('[POST] we received this data:', req.body);
+    //     const saveResult = await orm.saveFridge(id, category, item, is_rotten, quantity, image_url)
+
+    //     console.log( `... insertId: ${saveResult.insertId} ` )
+    //     res.send( { status: true, insertId: saveResult.insertId, message: 'Saved successfully' } )
+    // })
 
     app.delete('/api/food/:id', async function(req, res) {
         const taskId = req.params.id

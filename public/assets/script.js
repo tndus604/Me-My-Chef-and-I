@@ -35,17 +35,45 @@ async function itemList( category='' ) {
     console.log(`[itemList] category=${category}`, itemList)
 
     const renderItem = document.querySelector('#renderItem')
-    renderItem.innerHTML = ''
+	renderItem.innerHTML = ''
 
     itemList.forEach( function(data) {
         renderItem.innerHTML += `
         <div class="col-3">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-        <button class="btn" onclick="moveItem(${data.id})">${data.item}</button>
+        <button class="btn" onclick="moveItem(id='${data.id}')">${data.item}</button>
         </div>
         `
-    })
+	})
 }
+
+async function moveItem(id=''){
+	const itemIdList = await apiCall('/api/food/ingredient' + (id? `/${id}` : ''))
+	console.log(`[itemId] itemId=${id}`, itemIdList)
+
+	const renderFridge = document.querySelector('#renderFridge');
+
+	itemIdList.forEach(function(data) {
+
+		// const savedItem =  {
+		// 	id: data.id,
+		// 	category: data.category,
+		// 	item: data.item,
+		// 	is_rotten: data.is_rotten,
+		// 	quantity: data.quantity,
+		// 	image_url: data.image_url
+		// }
+
+		renderFridge.innerHTML += `
+		<li>
+			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
+			<p>${data.item}</p>
+			<button class="btn onclick="deleteItem(id='${data.id}')">Delete</button>
+		</li>
+		`
+	})
+}
+
 
 async function addItem(event) {
 	event.preventDefault()
@@ -73,6 +101,7 @@ async function addItem(event) {
 		itemList(newItem.category)
 	}
 }
+
 
 
 // ------------------------Spoonacular API-------------------------------

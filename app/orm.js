@@ -52,9 +52,13 @@ function removeItem(id){
     return db.query( 'DELETE FROM food WHERE id=?', id);
 }
 
-function updateItem(quantity, id) {
-    return db.query( 'UPDATE food SET quantity=? WHERE id=?', [quantity, id]);
+function moveItem(id) {
+    return db.query( 'SELECT * FROM food WHERE id=?', id);
 }
 
+// function saveFridge() {
+//     return db.query( 'SELECT * FROM food ' );
+// }
 
-module.exports = { selectAll, showItem, addItem, removeItem, updateItem };
+
+module.exports = { selectAll, showItem, addItem, removeItem, moveItem};
