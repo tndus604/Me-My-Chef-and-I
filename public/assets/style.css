@@ -3,9 +3,8 @@ body {
     height:100%;
     margin:0; 
     padding:0; 
-    box-sizing: border-box;
-    position: relative;
-    min-height: 100vh;
+    /* position: relative; */
+    /* min-height: 100vh; */
 }
 
 body {
@@ -14,6 +13,7 @@ body {
     background: rgb(232, 224, 223);
     color: rgb(71, 69, 69);
 }
+
 
 .title-logo{
     padding-left: 20px;
@@ -60,11 +60,11 @@ footer {
     width: 100%;
     padding: 15px 30px;
     margin-top: 100px;
-    margin-bottom:0;
-    bottom: 0px;
+    margin-bottom: 0;
+    bottom: 0;
     font-size: 13px;
     text-align: center;
-    position: relative;
+    /* position: absolute; */
 }
 
 /* @media  */
