@@ -57,17 +57,20 @@ async function addItem(event) {
 		image_url: document.querySelector('#image_url').value
 	}
 
-	document.querySelector('#category').value = ''
-	document.querySelector('#itemName').value = ''
-	document.querySelector('#quantity').value = ''
-	document.querySelector('#image_url').value = ''
+	document.querySelector('#category').value = '';
+	document.querySelector('#itemName').value = '';
+	document.querySelector('#quantity').value = '';
+	document.querySelector('#image_url').value = '';
+	if (!newItem.image_url){
+        newItem.image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSd2ZSGjR-kIYsWVqqgYJH5g-Aowx8abKcADw&usqp=CAU'
+    }
 	console.log('[addItem] itemData =', newItem);
 
-	const saveResponse = await apiCall('/api/food', 'POST', newItem)
+	const saveResponse = await apiCall('/api/food', 'post', newItem)
 	console.log('[saveResponse]', saveResponse)
 
 	if(saveResponse.status) {
-		itemList(category='')
+		itemList(newItem.category)
 	}
 }
 

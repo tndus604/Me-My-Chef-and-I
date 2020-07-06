@@ -11,7 +11,12 @@ function router( app ){
 
     app.post('/api/food', async function(req, res) {
         console.log( '[POST] we received this data:', req.body )
-        const saveResult = await orm.addItem( req.body.item, req.body.category, req.body.quantity, req.body.image_url )
+        if( !req.body.item ){
+            console.log( "sorry no item data found!" )
+            res.send( { status: false, message: "No message data found" } )
+        }
+        const saveResult = await orm.addItem( req.body.category, req.body.item, req.body.quantity, req.body.image_url )
+
         console.log( `... insertId: ${saveResult.insertId} ` )
 
         res.send( { status: true, insertId: saveResult.insertId, message: 'Saved successfully' } )
