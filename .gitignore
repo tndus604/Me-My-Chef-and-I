@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 node_modules
+=======
+node_modules/
+>>>>>>> master
 .env
 package-lock.json
