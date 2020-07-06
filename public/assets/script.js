@@ -47,6 +47,10 @@ async function itemList( category='' ) {
     })
 }
 
+async function addItem(data,id){
+	const itemAdd = await apiCall('/api/inFridge')
+	console.log(`[addItem] `) 
+}
 
 
 // ------------------------Spoonacular API-------------------------------

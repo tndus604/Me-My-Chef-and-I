@@ -1,9 +1,5 @@
 const mysql = require('mysql');
 // an external npm package we are using
-<<<<<<< HEAD
-// const moment = require('moment');
-=======
->>>>>>> master
 
 class Database {
     constructor( config ) {
@@ -60,6 +56,10 @@ function updateItem(quantity, id) {
     return db.query( 'UPDATE food SET quantity=? WHERE id=?', [quantity, id]);
 }
 
+function moveItem(id,category,item,is_rotten,quantity,image_url) {
+    return db.query( 'INSERT INTO inFridge (id, category, item, is_rotten, quantity, img_url) VALUES(?,?,?,?,?)')
+}
+
 // Future Plans: When quantity is updated, is_rotten resets. 
 
 
@@ -85,4 +85,4 @@ function updateItem(quantity, id) {
 //     return db.query( 'DELETE FROM tasks WHERE id=?', [ id ] )
 // }
 
-module.exports = { selectAll, showItem, addItem, removeItem, updateItem };
+module.exports = { selectAll, showItem, addItem, removeItem, updateItem, moveItem };

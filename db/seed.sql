@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-INSERT INTO food (category, item, image_url) VALUES ("meat", "Chicken", "https://icons.iconarchive.com/icons/lemon-liu/recipes/256/recipe-chicken-icon.png"), ("meat", "Beef", "https://img.icons8.com/cotton/2x/steak.png"), ("meat","Pork","https://eat-pregnant.com/wp-content/uploads/2019/06/mangerviande9.png"), ("meat", "Bacon", "https://images.vexels.com/media/users/3/212884/isolated/lists/887975edd462a66c9ac3a43ff114840d-simple-bacon-icon-flat.png"), ("meat", "Sausage", "https://cdn.iconscout.com/icon/premium/png-256-thumb/sausage-1509824-1275114.png"), ("meat","Lamb", "https://cdn.iconscout.com/icon/premium/png-256-thumb/mutton-2110992-1777904.png"), ("meat", "Turkey", "https://cdn.iconscout.com/icon/premium/png-256-thumb/turkey-1400395-1185967.png");
-=======
 INSERT INTO food (category, item, image_url) VALUES 
 ("dairy", "Milk", "https://pbs.twimg.com/profile_images/700460708241211392/4nMTSK8O_400x400.png"),
 ("dairy", "Cheddar cheese", "https://pbs.twimg.com/profile_images/607026562437808128/kLlmRBMa_400x400.jpg"),
@@ -69,4 +66,3 @@ INSERT INTO food (category, item, image_url) VALUES
 ("others", "Ketchup", "https://ui.assets-asda.com/dm/asdagroceries/5000157140241_T1?defaultImage=asdagroceries/noImage&resMode=sharp2&id=CTFSN0&fmt=jpg&fit=constrain,1&wid=256&hei=256"),
 ("others", "Mayonnaise", "https://ipcdn.freshop.com/resize?url=https://images.freshop.com/00079801246788/39af1f02be11dc6ae95e3917e60659c5_large.png&width=256&type=webp&quality=40");
 
->>>>>>> master
