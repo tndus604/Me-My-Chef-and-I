@@ -40,14 +40,25 @@ async function itemList( category='' ) {
 
     itemList.forEach( function(data) {
         renderItem.innerHTML += `
-        <div class="col-3">
+        <div class="col-4">
+        <a class="btn" onclick="addToFridge(${data})">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-        <button class="btn" onclick="itemAdd(${data.id})">${data.item}</button>
+        <p>${data.item}</p>
+        </a>
         </div>
         `
     })
 }
 
+function addToFridge(data){
+    var fridgeIngredient = document.querySelector('#fridge-ingredient');
+    fridgeIngredient.innerHTML += 
+    `
+        <li>
+        <p>${data.item}</p>
+        </li>
+    `
+}
 // async function taskList( due='' ){
 //     const taskList = await apiCall( '/api/food' + (category ? `/${category}` : '') )
 //     console.log( `[taskList] due='${category}'`, taskList )
@@ -171,6 +182,7 @@ function showData() {
 		}
 	})
 }
+
 var clicks = 0;
 
 function showInstruction(recipeID) {
@@ -209,4 +221,5 @@ function showInstruction(recipeID) {
         clicks++
 	})
 }
+
 

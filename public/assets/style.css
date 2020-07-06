@@ -15,6 +15,19 @@ body {
     color: rgb(71, 69, 69);
 }
 
+footer {
+    background-color: rgb(221, 134, 117);
+    color: white;
+    width: 100%;
+    padding: 15px 30px;
+    margin-top: 100px;
+    margin-bottom:0;
+    bottom: 0px;
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+}
+
 .title-logo{
     padding-left: 20px;
     font-family: 'Chewy', cursive;
@@ -59,21 +72,46 @@ nav {
     color: white;
 }
 
-footer {
-    background-color: rgb(221, 134, 117);
-    color: white;
-    width: 100%;
-    padding: 15px 30px;
-    margin-top: 100px;
-    margin-bottom:0;
-    bottom: 0px;
-    font-size: 13px;
-    text-align: center;
-    position: relative;
+/* FRIDGE.html */
+.ingredient-input {
+    background-color: white;
+    padding: 15px 10px;
+    border: 1px solid rgb(57,131,066);
+    border-radius: 10px;
 }
 
-.item-image{
-    width:20px;
-    height:20px;
+.submitIngreBtn {
+    background: rgb(40,75,29);
+    color: white;
+    border-radius: 2rem;
+    margin-top: 10px;
 }
-/* @media  */
+
+.vegi-btn, .category-btn{
+    background: rgb(57,131,066);
+    color: white;
+    font-size: 18px;
+}
+
+.category-btn:active, .vegi-btn:active {
+    background: red;
+}
+
+/* #renderItem {
+    border: 1px solid black;
+} */
+
+@media (min-width: 330px) {
+    .category-btn {
+        margin-left: 8px;
+    }
+}
+
+@media (min-width: 992px) {
+    .category-btn {
+        margin-left: 20px;
+    }
+    .vegi-btn, .category-btn {
+        font-size: 25px;
+    }
+}

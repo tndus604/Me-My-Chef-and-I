@@ -38,61 +38,67 @@
     </div>
   </nav>
 
-    
+  <div class="container mt-4">
   <div class="row text-center">
-    <div class="col-sm-12 col-md-6 text-center">
+    <div class="col-12 col-md-6 text-center">
       <div class="row">
-        <div class="col"><button type="button" class="btn btn-dark" onclick="itemList(category='vegetable')"><i class="fas fa-carrot"></i></button><br>Vegitables</div>
-        <div class="col"><button type="button" class="btn btn-dark" onclick="itemList(category='fruit')"><i class="fas fa-apple-alt"></i></button><br>Fruits</div>
-        <div class="col"><button type="button" class="btn btn-dark" onclick="itemList(category='dairy')"><i class="fas fa-cheese"></i></button><br>Dairy</div>
-        <div class="col"><button type="button" class="btn btn-dark" onclick="itemList(category='meat')"><i class="fas fa-drumstick-bite"></i></button><br>Meat</div>
-        <div class="col"><button type="button" class="btn btn-dark" onclick="itemList(category='seafood')"><i class="fas fa-fish"></i></button><br>Fish</div>
-        <div class="col"><button type="button" class="btn btn-dark" onclick="itemList(category='others')"><i class="fas fa-shopping-basket"></i></button><br>Others</div>
+        <div class="col-12">
+              <form class="ingredient-input">
+                <div class="form-group">
+                  <label for="foodInfo">Insert New Ingredient</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <select class="form-control" id="category">
+                        <option value="vegetable">Vegetable</option>
+                        <option value="fruit">Fruits</option>
+                        <option value="dairy">Dairy</option>
+                        <option value="meat">Meat</option>
+                        <option value="seafood">Seafood</option>
+                        <option value="others">Others</option>
+                      </select>                                        
+                    </div>
+                    <input class="form-control" id="itemName">
+                  </div>                              
+                </div>
+                <div class="form-row">
+                  <div class="col-4">
+                    <input type="number" class="form-control" id="quantity" placeholder="Quantity">
+                  </div>
+                  <div class="col-8">
+                    <input type="text" class="form-control" placeholder="Insert Image URL Here!">
+                  </div>
+                </div>
+                <button class="btn submitIngreBtn" type="submit">Submit</button>
+              </form>
+        </div>
+        <!-- https://cdn.onlinewebfonts.com/svg/img_19587.png -->
+        <div class="col-12 btn-row mt-3 mb-3">
+        <button type="button vegi-btn" class="btn vegi-btn" onclick="itemList(category='vegetable')"><i class="fas fa-carrot"></i></button>
+        <button type="button" class="btn category-btn" onclick="itemList(category='fruit')"><i class="fas fa-apple-alt"></i></button>
+        <button type="button" class="btn category-btn" onclick="itemList(category='dairy')"><i class="fas fa-cheese"></i></button>
+        <button type="button" class="btn category-btn" onclick="itemList(category='meat')"><i class="fas fa-drumstick-bite"></i></button>
+        <button type="button" class="btn category-btn" onclick="itemList(category='seafood')"><i class="fas fa-fish"></i></button>
+        <button type="button" class="btn category-btn" onclick="itemList(category='others')"><i class="fas fa-shopping-basket"></i></button>
+        </div>
       </div>
 
-      <div class="row" id="renderItem">   
-      </div>
-
+        <div class="row" id="renderItem">
+          
+        </div>
     </div>
-    <div class="col-sm-12 col-md-6 text-center">
-        <img src="./assets/fridge3.png" style="height: 50px;"><span style="font-size: 30px; padding-top: 10px;">Your Fridge</span>
+
+    <div class="col-12 col-md-6 text-center">
+      <!-- title -->
+      <img src="./assets/fridge3.png" style="height: 50px;"><span style="font-size: 30px; padding-top: 10px;">Your Fridge</span>
+      <!-- Fridge List -->
+      <div class="container" style="border: 1px solid black">
+        <ul id='fridge-ingredient'>
+
+        </ul>
+      </div>
     </div>
   </div>
-
-  <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <form>
-          <div class="form-group">
-            <label for="foodInfo">Ingredient</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <select class="form-control" id="category">
-                  <option value="vegetable">Vegetable</option>
-                  <option value="fruit">Fruits</option>
-                  <option value="dairy">Dairy</option>
-                  <option value="meat">Meat</option>
-                  <option value="seafood">Seafood</option>
-                  <option value="others">Others</option>
-                </select>                                        
-              </div>
-              <input class="form-control" id="itemName">
-            </div>                              
-          </div>
-          <div class="form-group">
-            <label for="quantity">Quantity</label>
-            <input type="number" class="form-control" id="quantity">
-          </div>
-          <div class="form-group">
-            <label for="imageUrl">Image_url</label>
-            <input type="text" class="form-control" id="imageUrl">
-          </div>
-          <button class="btn btn-primary" type="submit">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
+</div>
   <footer class="footer">
     <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
   </footer>
