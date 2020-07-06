@@ -3,8 +3,9 @@ body {
     height:100%;
     margin:0; 
     padding:0; 
-    /* position: relative; */
-    /* min-height: 100vh; */
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100vh;
 }
 
 body {
@@ -14,6 +15,18 @@ body {
     color: rgb(71, 69, 69);
 }
 
+footer {
+    background-color: rgb(221, 134, 117);
+    color: white;
+    width: 100%;
+    padding: 15px 30px;
+    margin-top: 100px;
+    margin-bottom:0;
+    bottom: 0px;
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+}
 
 .title-logo{
     padding-left: 20px;
@@ -24,6 +37,11 @@ body {
 
 nav {
     background-color: rgb(221, 134, 117);
+    overflow: hidden;
+    position: fixed;
+    /* top: 0; */
+    width: 100%;
+
 }
 
 .jumbotron {
@@ -54,17 +72,42 @@ nav {
     color: white;
 }
 
-footer {
-    background-color: rgb(221, 134, 117);
-    color: white;
-    width: 100%;
-    padding: 15px 30px;
-    margin-top: 100px;
-    margin-bottom: 0;
-    bottom: 0;
-    font-size: 13px;
-    text-align: center;
-    /* position: absolute; */
+/* FRIDGE.html */
+.ingredient-input {
+    background-color: white;
+    padding: 15px 10px;
+    border: 1px solid rgb(57,131,066);
+    border-radius: 10px;
 }
 
-/* @media  */
+.submitIngreBtn {
+    background: rgb(40,75,29);
+    color: white;
+    border-radius: 2rem;
+    margin-top: 10px;
+}
+
+.vegi-btn, .category-btn{
+    background: rgb(57,131,066);
+    color: white;
+    font-size: 18px;
+}
+
+.category-btn:active, .vegi-btn:active {
+    background: red;
+}
+
+@media (min-width: 330px) {
+    .category-btn {
+        margin-left: 8px;
+    }
+}
+
+@media (min-width: 992px) {
+    .category-btn {
+        margin-left: 20px;
+    }
+    .vegi-btn, .category-btn {
+        font-size: 25px;
+    }
+}
