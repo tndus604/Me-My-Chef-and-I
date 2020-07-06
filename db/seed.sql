@@ -66,5 +66,3 @@ INSERT INTO food (category, item, image_url) VALUES
 ("others", "Ketchup", "https://ui.assets-asda.com/dm/asdagroceries/5000157140241_T1?defaultImage=asdagroceries/noImage&resMode=sharp2&id=CTFSN0&fmt=jpg&fit=constrain,1&wid=256&hei=256"),
 ("others", "Mayonnaise", "https://ipcdn.freshop.com/resize?url=https://images.freshop.com/00079801246788/39af1f02be11dc6ae95e3917e60659c5_large.png&width=256&type=webp&quality=40");
 
-
-

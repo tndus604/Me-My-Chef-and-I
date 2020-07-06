@@ -7,7 +7,6 @@
 //     closeFridge.style.display = "none";
 // }
 
-
 /* unlike node where we can pull in packages with npm, or react, for normal
     webpages, we can use a cool resource called unpkg from the html page, so
     in this example we use the moment npm package on both the server & client side */
@@ -50,108 +49,20 @@ async function itemList( category='' ) {
     })
 }
 
-// async function taskList( due='' ){
-//     const taskList = await apiCall( '/api/food' + (category ? `/${category}` : '') )
-//     console.log( `[taskList] due='${category}'`, taskList )
 
-//     const listEl = document.querySelector('#list')
-//     listEl.innerHTML = ''
 
-//     taskList.forEach( function( task ){
-//         listEl.innerHTML += `
-//         <li class="list-group-item">
-//             <div class="float-right p-0">
-//                 <button onClick="taskDelete(${task.id})" class="border-0 btn-transition btn btn-outline-danger"> <i class="fa fa-trash"></i> </button>
-//             </div>
-//             <div class="todo-indicator bg-${task.priority}"></div>
-//             <h3 class="text-primary">${task.info}</h3>
-//             <small class="text-muted">${task.due ? 'Due: '+moment(task.due).format('MMM Do, YYYY') : '' }</small>
-//         </li>
-//         `
-//     })
-// }
-
-/* functions triggered by the html page */
-
-// run once page has loaded
-// async function mainApp(){
-//     console.log( '[mainApp] starting...' )
-
-//     // show the task list ...
-//     taskList()
-// }
-
-// function showTodaysTasks(){
-//     document.querySelector('#todayTasksBtn').classList.add('d-none')
-//     document.querySelector('#allTasksBtn').classList.remove('d-none')
-
-//     const today = moment().format('YYYY-MM-DD')
-//     taskList( today )
-// }
-
-// function showAllTasks(){
-//     document.querySelector('#todayTasksBtn').classList.remove('d-none')
-//     document.querySelector('#allTasksBtn').classList.add('d-none')
-
-//     taskList()
-// }
-
-// // toggled by the [Add Task] button
-// function toggleTaskForm( forceHide=false ){
-//     const formEl = document.querySelector('#taskForm')
-//     if( !forceHide || formEl.classList.contains('d-none') ){
-//         formEl.classList.remove( 'd-none' )
-//     } else {
-//         formEl.classList.add( 'd-none' )
-//     }
-// }
-
-// // triggered by the [x] delete button
-// async function taskDelete( id ){
-//     const deleteResponse = await apiCall( `/api/tasks/${id}`, 'delete' )
-//     console.log( '[taskDelete] ', deleteResponse )
-
-//     taskList()
-// }
-
-// // save the new form
-// async function saveForm( event ){
-//     event.preventDefault()
-
-//     const formData = {
-//         priority: document.querySelector('#taskPriority').value,
-//         info: document.querySelector('#taskInfo').value,
-//         due: document.querySelector('#taskDue').value
-//     }
-
-//     // clear form
-//     document.querySelector('#taskPriority').value = ''
-//     document.querySelector('#taskInfo').value = ''
-//     document.querySelector('#taskDue').value = ''
-//     console.log( '[saveForm] formData=', formData )
-
-//     const saveResponse = await apiCall( '/api/tasks', 'post', formData )
-//     console.log( '[saveResponse] ', saveResponse )
-
-//     if( saveResponse.status ){
-//         // hide the form
-//         toggleTaskForm( true )
-
-//         // refresh the list
-//         taskList()
-//     }
-// }
+// ------------------------Spoonacular API-------------------------------
 
 function showData() {
 	var ingredient = document.querySelector("#ingredientInput").value.toLowerCase();
 	var settings = {
 		"async": true,
 		"crossDomain": true,
-		"url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ignorePantry=false&ingredients=${ingredient}`,
+		"url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=20&ranking=1&ignorePantry=false&ingredients=${ingredient}`,
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-			"x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
+			"x-rapidapi-key": "642fe22188msha6dd6111fa42a5cp18c081jsn4095bcf2f4c1"
 		}
 	}
 	$.ajax(settings).done(function (response) {
@@ -164,10 +75,18 @@ function showData() {
 			<div class="col-sm-12 col-md-4">
 				<img src="${response[i].image}">
 			</div>
-            <div class="col-sm-12 col-md-8" id=''>
-				<p><strong>${response[i].title}</strong></p>
+			<div class="col-sm-12 col-md-8">
+				<p><strong>${response[i].title}</strong>
+				<br>Missing Ingredients:</p>
+				<ul>
+					${response[i].missedIngredients[0] ? `<li>${response[i].missedIngredients[0].name}` : ``}
+					${response[i].missedIngredients[1] ? `<li>${response[i].missedIngredients[1].name}` : ``}
+					${response[i].missedIngredients[2] ? `<li>${response[i].missedIngredients[2].name}` : ``}
+					${response[i].missedIngredients[3] ? `<li>${response[i].missedIngredients[3].name}` : ``}
+					${response[i].missedIngredients[4] ? `<li>${response[i].missedIngredients[4].name}` : ``}
+				</ul>
 				<button class="btn btn-primary" onClick="showInstruction(${recipeID})">Detail</button>
-				<ol id="item${recipeID}"></ol>
+				<ol id="showDetail${recipeID}"></ol>
 			</div>
 			`;
 		}
@@ -184,32 +103,20 @@ function showInstruction(recipeID) {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-			"x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
+			"x-rapidapi-key": "642fe22188msha6dd6111fa42a5cp18c081jsn4095bcf2f4c1"
 		}
     }
 	$.ajax(settings).done(function (data) {
 		console.log(data);
-		var showDetail = document.querySelector('#item'+recipeID);
-        showDetail.innerHTML = '';
-        
-        if (clicks % 2 === 0){
-            for (var i=0; i<data.length; i++) {
-                for (var j=0; j<data[i].steps.length; j++) {
-                    showDetail.innerHTML += `
-                    <li>${data[i].steps[j].step}</li>
-                    `
-                    // if( data.length = 0 ){
-                    //     showDetail.innerHTML += `No Instruction Available`
-                    //     console.log(`where is zero`)
-                    // }     NEED FIX*******************WHEN NO STEPS FOUND
-                }
-            }
-        }
-        else {
-            showDetail.innerHTML = ''
-        }
-		
-        clicks++
+		var showDetail = document.querySelector('#showDetail'+recipeID);
+		showDetail.innerHTML = '';
+		for (var i=0; i<data.length; i++) {
+			for (var j=0; j<data[i].steps.length; j++) {
+				showDetail.innerHTML += `
+				${data[i].steps[j] ? `<li>${data[i].steps[j].step}</li>` : `<li>Sorry there's no detailed recipe :(</li>`}
+				`
+			}
+		}
 	})
 }
 
