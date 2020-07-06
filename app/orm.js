@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 // an external npm package we are using
-const moment = require('moment');
+// const moment = require('moment');
 
 class Database {
     constructor( config ) {
@@ -42,7 +42,7 @@ function selectAll( ){
 }
 
 function showItem(category) {
-    return db.query( 'SELECT item FROM food WHERE category=?', category );
+    return db.query( 'SELECT * FROM food WHERE category=?', category );
 }
 
 function addItem(item, category, quantity, url ){
