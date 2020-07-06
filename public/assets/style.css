@@ -97,10 +97,6 @@ nav {
     background: red;
 }
 
-/* #renderItem {
-    border: 1px solid black;
-} */
-
 @media (min-width: 330px) {
     .category-btn {
         margin-left: 8px;

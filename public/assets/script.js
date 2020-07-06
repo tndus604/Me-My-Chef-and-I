@@ -50,15 +50,6 @@ async function itemList( category='' ) {
     })
 }
 
-function addToFridge(data){
-    var fridgeIngredient = document.querySelector('#fridge-ingredient');
-    fridgeIngredient.innerHTML += 
-    `
-        <li>
-        <p>${data.item}</p>
-        </li>
-    `
-}
 // async function taskList( due='' ){
 //     const taskList = await apiCall( '/api/food' + (category ? `/${category}` : '') )
 //     console.log( `[taskList] due='${category}'`, taskList )
