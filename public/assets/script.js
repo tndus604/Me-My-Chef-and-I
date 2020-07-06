@@ -40,17 +40,73 @@ async function itemList( category='' ) {
     itemList.forEach( function(data) {
         renderItem.innerHTML += `
         <div class="col-4">
-        <a class="btn" onclick="addToFridge(${data})">
+        <button class="btn" onclick="addToFridge(this)" id="${data.id}" name="${data.item}" is_rotten="${data.is_rotten}">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
         <p>${data.item}</p>
-        </a>
+        </button>
         </div>
         `
     })
 }
 
+async function addItem(event){
+    event.preventDefault();
+    console.log(`additem will begins`)
 
+    const newItem = {
+        category: document.querySelector('#category').value,
+        item: document.querySelector('#itemName').value,
+        quantity: document.querySelector('#quantity').value,
+        image_url: document.querySelector('#image_url').value
+    }
 
+    document.querySelector('#category').value = '';
+    document.querySelector('#itemName').value = '';
+    document.querySelector('#quantity').value = '',
+    document.querySelector('#image_url').value = '';
+
+    if (!newItem.image_url){
+        newItem.image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSd2ZSGjR-kIYsWVqqgYJH5g-Aowx8abKcADw&usqp=CAU'
+    }
+    console.log( `added item :` , newItem);
+    
+    const saveResponse = await apiCall('/api/food', 'post', newItem);
+    console.log('saveResponse: ', saveResponse );
+
+    if (saveResponse.status){
+        itemList(newItem.category);
+    }
+    
+}
+async function displayFridgeList (){
+    const getResponse = await apiCall('/api/fridge');
+    var fridgeIngredient = document.querySelector('#fridge-ingredient');
+    getResponse.forEach( function(data) {
+        fridgeIngredient.innerHTML += 
+        `
+        <img src="${data.image_url}" /><span>${data.item}</span>
+    `
+    })
+}
+async function addToFridge(data){
+    const fridgeItem = {
+        id: data.id,
+        item: data.name
+    }
+    console.log(fridgeItem);
+    const savedResponse = await apiCall('/api/food', 'put', fridgeItem);
+    console.log('saveResponse: ', savedResponse );
+
+    var fridgeIngredient = document.querySelector('#fridge-ingredient');
+    const getResponse = await apiCall('/api/fridge')
+    fridgeIngredient.innerHTML = ''
+    getResponse.forEach( function(data) {
+        fridgeIngredient.innerHTML += 
+        `
+            <img src="${data.image_url}" /><span>${data.item}</span>
+        `
+    })
+}
 // ------------------------Spoonacular API-------------------------------
 
 function showData() {
@@ -72,10 +128,10 @@ function showData() {
 		for (i=0 ; i<response.length; i++) {
 			var recipeID = response[i].id;
 			recipeResult.innerHTML += `
-			<div class="col-sm-12 col-md-4">
-				<img src="${response[i].image}">
+			<div class="col-sm-12 col-md-6 col-lg-4 recipe-image">
+				<img class="recipeFood-image" src="${response[i].image}">
 			</div>
-			<div class="col-sm-12 col-md-8">
+			<div class="col-sm-12 col-md-6 col-lg-8">
 				<p><strong>${response[i].title}</strong>
 				<br>Missing Ingredients:</p>
 				<ul>
@@ -85,15 +141,13 @@ function showData() {
 					${response[i].missedIngredients[3] ? `<li>${response[i].missedIngredients[3].name}` : ``}
 					${response[i].missedIngredients[4] ? `<li>${response[i].missedIngredients[4].name}` : ``}
 				</ul>
-				<button class="btn btn-primary" onClick="showInstruction(${recipeID})">Detail</button>
+				<button class="btn step-btn" onClick="showInstruction(${recipeID})">Detail</button>
 				<ol id="showDetail${recipeID}"></ol>
 			</div>
 			`;
 		}
 	})
 }
-
-var clicks = 0;
 
 function showInstruction(recipeID) {
 	var settings = {
@@ -103,21 +157,34 @@ function showInstruction(recipeID) {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-			"x-rapidapi-key": "642fe22188msha6dd6111fa42a5cp18c081jsn4095bcf2f4c1"
+			"x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
 		}
     }
+    var clicks = 0;
+    
 	$.ajax(settings).done(function (data) {
 		console.log(data);
 		var showDetail = document.querySelector('#showDetail'+recipeID);
-		showDetail.innerHTML = '';
-		for (var i=0; i<data.length; i++) {
-			for (var j=0; j<data[i].steps.length; j++) {
-				showDetail.innerHTML += `
-				${data[i].steps[j] ? `<li>${data[i].steps[j].step}</li>` : `<li>Sorry there's no detailed recipe :(</li>`}
-				`
-			}
-		}
-	})
-}
+        showDetail.innerHTML = '';
+        
+        if (clicks % 2 === 0){
+            for (var i=0; i<data.length; i++) {
+                for (var j=0; j<data[i].steps.length; j++) {
+                    showDetail.innerHTML += `
+                    <li>${data[i].steps[j].step}</li>
+                    `
+                    // if( data.length = 0 ){
+                    //     showDetail.innerHTML += `No Instruction Available`
+                    //     console.log(`where is zero`)
+                    // }     NEED FIX*******************WHEN NO STEPS FOUND
+                }
+            }
+        }
+        else {
+            showDetail.innerHTML = ''
+        }
+        clicks++
+    })
+};
 
 
