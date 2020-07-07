@@ -40,12 +40,50 @@ async function itemList( category='' ) {
     itemList.forEach( function(data) {
         renderItem.innerHTML += `
         <div class="col-3">
+        <button class="btn" onclick="addToFridge(this)" id="${data.id}" name="${data.item}" is_rotten="${data.is_rotten}">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-        <button class="btn" onclick="moveItem(${data.id})">${data.item}</button>
+        <p>${data.item}</p>
+        </button>
         </div>
         `
     })
 }
+
+
+async function displayFridgeList (){
+    const getResponse = await apiCall('/api/fridge');
+    var renderFridge = document.querySelector('#renderFridge');
+    getResponse.forEach( function(data) {
+        renderFridge.innerHTML += `
+		<div class="col-6">
+			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
+			<div>${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+		</div>
+    `
+    })
+}
+async function addToFridge(data){
+    const fridgeItem = {
+        id: data.id,
+        item: data.name
+    }
+    console.log(fridgeItem);
+    const savedResponse = await apiCall('/api/food', 'put', fridgeItem);
+    console.log('saveResponse: ', savedResponse );
+
+    var renderFridge = document.querySelector('#renderFridge');
+    const getResponse = await apiCall('/api/fridge')
+    renderFridge.innerHTML = ''
+    getResponse.forEach( function(data) {
+        renderFridge.innerHTML += `
+		<div class="col-6">
+			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
+			<div${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+		</div>
+        `
+    })
+}
+
 
 async function addItem(event) {
 	event.preventDefault()
@@ -75,6 +113,7 @@ async function addItem(event) {
 }
 
 
+
 // ------------------------Spoonacular API-------------------------------
 
 function showData() {
@@ -96,8 +135,8 @@ function showData() {
 		for (i=0 ; i<response.length; i++) {
 			var recipeID = response[i].id;
 			recipeResult.innerHTML += `
-			<div class="col-sm-12 col-md-4">
-				<img src="${response[i].image}">
+			<div class="col-sm-12 col-md-4 recipe-image">
+				<img class="recipeFood-image" src="${response[i].image}">
 			</div>
 			<div class="col-sm-12 col-md-8">
 				<p><strong>${response[i].title}</strong>
@@ -109,7 +148,7 @@ function showData() {
 					${response[i].missedIngredients[3] ? `<li>${response[i].missedIngredients[3].name}` : ``}
 					${response[i].missedIngredients[4] ? `<li>${response[i].missedIngredients[4].name}` : ``}
 				</ul>
-				<button class="btn btn-primary" onClick="showInstruction(${recipeID})">Detail</button>
+				<button class="btn step-btn" onClick="showInstruction(${recipeID})">Instruction</button>
 				<ol id="showDetail${recipeID}"></ol>
 			</div>
 			`;
@@ -128,6 +167,7 @@ function showInstruction(recipeID) {
 			"x-rapidapi-key": "642fe22188msha6dd6111fa42a5cp18c081jsn4095bcf2f4c1"
 		}
 	}
+
 	$.ajax(settings).done(function (data) {
 		console.log(data);
 		var showDetail = document.querySelector('#showDetail'+recipeID);
@@ -138,6 +178,6 @@ function showInstruction(recipeID) {
 				${data[i].steps[j] ? `<li>${data[i].steps[j].step}</li>` : `<li>Sorry there's no detailed recipe :(</li>`}
 				`
 			}
-		}
+		}	
 	})
-}
+};

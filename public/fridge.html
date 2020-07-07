@@ -19,7 +19,7 @@
     <!-- any NPM packages you want to include, you can directly include like this -->
     <script src="https://unpkg.com/moment"></script>
 </head>
-<body>
+<body onload="displayFridgeList(), itemList(category='vegetable')">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand title-logo" href="index.html" style="color: white;"><i class="fas fa-utensils"></i> Me MyChef & I</a>
@@ -92,11 +92,17 @@
       <img src="./assets/fridge3.png" style="height: 50px;"><span style="font-size: 30px; padding-top: 10px;">Your Fridge</span>
       <!-- Fridge List -->
       <div class="container" style="border: 1px solid black">
+<<<<<<< HEAD
         <ul id='fridge-ingredient'>
           <div class="row" id="renderItem">
           
           </div>
         </ul>
+=======
+        <div class="row" id='renderFridge'>
+
+        </div>
+>>>>>>> Haley
       </div>
     </div>
   </div>

@@ -22,16 +22,32 @@ function router( app ){
         res.send( { status: true, insertId: saveResult.insertId, message: 'Saved successfully' } )
     });
 
+    // app.get('/api/food/ingredient/:id', async function(req, res) {
+    //     const foodId = req.params.id;
+    //     console.log(`[GET] putting food into fridge, id=${foodId}`);
+    //     const listById = await orm.moveItem(foodId);
+
+    //     res.send( listById );
+    // });
+
+    app.get('/api/fridge', async function(req, res) {
+        // const ingredient = req.params.id
+       const listFromFridge = await orm.showFridge();
+        console.log(listFromFridge)
+       res.send( listFromFridge );
+   })
+
     app.put('/api/food', async function(req, res) {
         console.log( '[PUT] we received this data:', req.body )
         if( !req.body.id ) {
             res.status(404).send( { message: 'Invalid id' } )
         }
 
-        const saveResult = await orm.updateItem( req.body.id, req.body.item, req.body.category, req.body.quantity, req.body.img_url )
+        const saveResult = await orm.updateFridge( req.body.id )
         console.log( '... ', saveResult )
         res.send( { status: true, message: 'Updated successfully' } )
     });
+
 
     app.delete('/api/food/:id', async function(req, res) {
         const taskId = req.params.id

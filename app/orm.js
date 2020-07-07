@@ -52,9 +52,19 @@ function removeItem(id){
     return db.query( 'DELETE FROM food WHERE id=?', id);
 }
 
-function updateItem(quantity, id) {
-    return db.query( 'UPDATE food SET quantity=? WHERE id=?', [quantity, id]);
+// function moveItem(id) {
+//     return db.query( 'SELECT * FROM food WHERE id=?', id);
+// }
+
+function showFridge() {
+    return db.query( 'SELECT * FROM fridge');
+}
+function updateFridge(id){
+    return db.query ('INSERT INTO fridge ( item, is_rotten, quantity, image_url ) SELECT item, is_rotten, quantity, image_url FROM food WHERE food.id=?', id);
 }
 
-
+<<<<<<< HEAD
 module.exports = { selectAll, showItem, addItem, removeItem, updateItem};
+=======
+module.exports = { selectAll, showItem, addItem, removeItem, showFridge, updateFridge};
+>>>>>>> Haley
