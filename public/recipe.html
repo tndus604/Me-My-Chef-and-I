@@ -13,38 +13,82 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <!-- Font CSS LINK -->
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka+One&family=Titillium+Web&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <!-- local css link -->
     <link href="assets/style.css" rel="stylesheet">
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand title-logo" href="index.html" style="color: white;"><i class="fas fa-utensils"></i> Me MyChef & I</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="recipe.html">Recipe</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="fridge.html">Check Your Fridge</a>
-            </li>
-          </ul>
-        </div>
-    </nav>
+  <!-- <nav class="navbar navbar-light bg-light flex-column">
+    <a class="navbar-brand text-center" href="index.html" style="font-size: 50px;">Me MyChef & I</a>
+    <ul class="navbar-nav flex-row" style="border-top: 1px solid black; border-bottom: 1px solid black;">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="portfolio.html" style="margin-left: 30px">Ingredients</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact.html" style="margin-left: 30px">Recipes</a>
+      </li>
+    </ul>
+  </nav> -->
+
+  <nav class="navbar flex-column">
+    <a class="navbar-brand text-center" href="index.html" style="font-size: 50px; padding-top: 30px; padding-bottom: 30px;">Me MyChef & I</a>
+      <ul class="nav justify-content-center" style="border-top: 1px black solid; border-bottom: 1px black solid">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="fridge.html">Ingredients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recipe.html">Recipe</a>
+        </li>
+      </ul>
+  </nav>
 
     <div class="container">
-        <p>What is in your fridge?</p>
-        <div class="input-group mb-3">
-          <input type="text" id="ingredientInput" class="form-control" placeholder="Type ingredients">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" onclick="showData()">Search</button>
+      <div id="jumbotron2" class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1>Food is the most precious thing.</h1>
+          <div class="input-group mb-3">
+            <input type="text" id="ingredientInput" class="form-control" placeholder="Type ingredients">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" onclick="showData()">Search</button>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div class="row" id="cardContent">
+        <div class="col-sm-12 col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="https://images-ext-1.discordapp.net/external/nwwyFmqUBHQm_T1SXS55ilK4hTUlTtUOiQLndM07g88/https/i.pinimg.com/originals/b8/af/4b/b8af4b4c5893b115d8ef9357d9d22b24.jpg?width=600&height=600" alt="Card image cap" style="height: 300px;">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="https://images-ext-1.discordapp.net/external/VVnv04CKAR2FP_r8V0_43Vpwdehh9hRvtQm76r_kW6Y/https/i.pinimg.com/originals/47/55/9d/47559dae23f1adc46279c7e2b49923fa.jpg" alt="Card image cap" style="height: 300px;">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="https://images-ext-2.discordapp.net/external/dEyeD4ixHqm3KfvSZ1dA7snokbR5X9w1vtouLTssexs/https/cdn.cheapism.com/images/070816_fancy_food_show_trends_for_cheap_slid.max-420x243_WY0f1Hv.jpg" alt="Card image cap" style="height: 300px;">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     
         <div id="recipeResult" class="row">
     

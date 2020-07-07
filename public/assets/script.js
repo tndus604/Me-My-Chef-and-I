@@ -135,10 +135,10 @@ function showData() {
 		for (i=0 ; i<response.length; i++) {
 			var recipeID = response[i].id;
 			recipeResult.innerHTML += `
-			<div class="col-sm-12 col-md-4 recipe-image">
+			<div class="col-sm-12 col-md-6 col-lg-4 recipe-image">
 				<img class="recipeFood-image" src="${response[i].image}">
 			</div>
-			<div class="col-sm-12 col-md-8">
+			<div class="col-sm-12 col-md-6 col-lg-8">
 				<p><strong>${response[i].title}</strong>
 				<br>Missing Ingredients:</p>
 				<ul>

@@ -21,21 +21,19 @@
 </head>
 <body onload="displayFridgeList(), itemList(category='vegetable')">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand title-logo" href="index.html" style="color: white;"><i class="fas fa-utensils"></i> Me MyChef & I</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right">
-      <ul class="navbar-nav ml-auto">
+  <nav class="navbar flex-column">
+    <a class="navbar-brand text-center" href="index.html" style="font-size: 50px; padding-top: 30px; padding-bottom: 30px;">Me MyChef & I</a>
+      <ul class="nav justify-content-center" style="border-top: 1px black solid; border-bottom: 1px black solid">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="fridge.html">Ingredients</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="recipe.html">Recipe</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="fridge.html">Check Your Fridge</a>
-        </li>
       </ul>
-    </div>
   </nav>
 
   <div class="container mt-4">
