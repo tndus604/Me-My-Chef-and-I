@@ -51,12 +51,13 @@ async function itemList( category='' ) {
 
 async function displayFridgeList (){
     const getResponse = await apiCall('/api/fridge');
-    var renderFridge = document.querySelector('#renderFridge');
+	var renderFridge = document.querySelector('#renderFridge');
+	renderFridge.innerHTML = '';
     getResponse.forEach( function(data) {
         renderFridge.innerHTML += `
-		<div class="col-6">
+		<div class="col-4">
 			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<div>${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+			<p>${data.item}</p><button class="btn btn-danger" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button>
 		</div>
     `
     })
@@ -76,20 +77,20 @@ async function addToFridge(data){
     const getResponse = await apiCall('/api/fridge')
     getResponse.forEach( function(data) {
         renderFridge.innerHTML += `
-		<div class="col-6">
+		<div class="col-4">
 			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<div${data.item} <button class="btn btn-danger" onclick="removeItem(this.id)" id="${data.id}"><i class="fa fa-trash"></i></button></div>
+			<p>${data.item}</p><button class="btn btn-danger delitem" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button>
 		</div>
         `
     })
 }
 
 async function removeItem(id){
+	console.log(`removing item ${id}`)
 	const deleteResponse = await apiCall( `/api/fridge/${id}`, 'delete');
 	console.log('[foodDeleted] ', deleteResponse )
-	displayFridgeList();
+	displayFridgeList ();
 }
-
 
 async function addItem(event) {
 	event.preventDefault()

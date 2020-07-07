@@ -9,15 +9,12 @@ body {
 }
 
 body {
-    /* font-family: 'Titillium Web', sans-serif; */
-    /* font-family: 'Fredoka One', cursive; */
-    background: rgb(232, 224, 223);
-    color: rgb(71, 69, 69);
+    color: rgb(66, 65, 65);
 }
 
 footer {
-    background-color: rgb(221, 134, 117);
-    color: white;
+    background-color: rgb(233, 208, 203);
+    color: rgb(66, 65, 65);
     width: 100%;
     padding: 15px 30px;
     margin-top: 100px;
@@ -28,44 +25,54 @@ footer {
     position: relative;
 }
 
-.title-logo{
-    padding-left: 20px;
-    font-family: 'Chewy', cursive;
-    /* font-family: 'Fredoka One', cursive; */
-    font-size: 30px;
+a, a:hover {
+    text-decoration : none;
+    color: black;
 }
 
+ul {
+    width: 90%;
+}
+.nav-link:hover{
+    background: rgb(211, 209, 209);
+    color: black;
+}
+
+.title-logo{
+    padding-left: 20px;
+    font-family: 'Poiret One', cursive;
+    font-size: 30px;
+}
 nav {
-    background-color: rgb(221, 134, 117);
+    background-color: white;
+    font-family: 'Poiret One', cursive;
     overflow: hidden;
     position: fixed;
     /* top: 0; */
     width: 100%;
-
 }
 
 .jumbotron {
-    font-family: 'Fredoka One', cursive;
-    background-image: url("https://www.helpguide.org/wp-content/uploads/table-with-grains-vegetables-fruit-768.jpg");
-    color: white;
+    background-image: url("https://images.agoramedia.com/everydayhealth/gcms/What-Is-a-Plant-Based-Diet-Beginners-Guide-Food-List-Benefits-722x406.jpg");
     text-shadow: 1px 0px 10px rgb(0, 0, 0);
+    color: white;
     background-size: cover;
-    background-color: white;
     background-position: center;
     position: relative;
     width: 100%;
-    height: auto;
-    margin: 0;
+    height: 350px;
+    margin-top: 20px;
     border-radius: 0;
-    padding-top: 10%;
+    padding-top:13%;
 }
 
-.main-menu {
+
+/* .main-menu {
     padding-top: 70px;
-}
+} */
 
 .contentImg {
-    height: 200px;
+    height: 250px;
 }
 
 #searchBtn {
@@ -118,13 +125,35 @@ nav {
 }
 
 /* RECIPE.html */
-.recipeFood-image{
-    max-width: 310px;
-    height: auto;
+#jumbotron2 {
+    background-image: url("https://honestcooking.com/wp-content/uploads/2015/09/shutterstock_198603584.jpg");
+    height: 250px;
+    padding-top:10%;
 }
+
+#subtitle {
+    font-family: 'Poiret One', cursive;
+    border-bottom: 1px solid lightgray; 
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
+h2 span { 
+    background:#fff; 
+    padding:0 10px; 
+}
+
+.card{
+    margin: 2%;
+    height: 400px;
+}
+
+
 .recipeSearch-btn{
-    border: 1px solid rgb(40,75,29);
-    color: rgb(40,75,29);
+    border: 1px solid rgba(255, 255, 255, 0.363);
+    color: rgb(255, 255, 255);
 }
 
 .recipeSearch-btn:hover {

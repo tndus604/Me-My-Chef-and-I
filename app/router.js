@@ -53,8 +53,9 @@ function router( app ){
         const ingredientId = req.params.id
         console.log( `[DELETE] id=${ingredientId}` )
         const deleteResult = await orm.removeItem( ingredientId )
-        console.log( '... ', deleteResult )
 
+        console.log( '... ', deleteResult )
+    
         res.send( { status: true, message: 'Deleted successfully' } )
     });
 }

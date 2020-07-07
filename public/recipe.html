@@ -13,42 +13,75 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <!-- Font CSS LINK -->
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka+One&family=Titillium+Web&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <!-- local css link -->
     <link href="assets/style.css" rel="stylesheet">
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand title-logo" href="index.html" style="color: white;"><i class="fas fa-utensils"></i> Me MyChef & I</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="recipe.html">Recipe</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="fridge.html">Check Your Fridge</a>
-            </li>
-          </ul>
-        </div>
-    </nav>
+  <nav class="navbar flex-column">
+    <a class="navbar-brand text-center" href="index.html" style="font-size: 50px; padding-top: 30px; padding-bottom: 30px;">Me MyChef & I</a>
+      <ul class="nav justify-content-center" style="border-top: 1px black solid; border-bottom: 1px black solid">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="fridge.html">Ingredients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recipe.html">Recipe</a>
+        </li>
+      </ul>
+  </nav>
 
     <div class="container">
-        <p>What is in your fridge?</p>
-        <div class="input-group mb-3">
-          <input type="text" id="ingredientInput" class="form-control" placeholder="Type ingredients">
-          <div class="input-group-append">
-            <button class="btn recipeSearch-btn" type="button" onclick="showData()">Search</button>
+      <div id="jumbotron2" class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1>Search for the recipe</h1>
+          <div class="input-group mb-3">
+            <input type="text" id="ingredientInput" class="form-control" placeholder="Type ingredients">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" onclick="showData()">Search</button>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div id="recipeResult" class="row">
     
-        <div id="recipeResult" class="row">
-    
+      </div>
+
+      <div id="tips">
+        <h2 id="subtitle"><span>Useful Cooking Ideas</span></h2>
+        <div class="row" id="cardContent">
+          <div class="col-sm-12 col-md-4">
+            <div class="card">
+              <a href="https://www.delish.com/kitchen-tools/kitchen-secrets/g25585978/best-cooking-tips/"><img class="card-img-top" src="https://images.squarespace-cdn.com/content/v1/529fc0c0e4b088b079c3fb6d/1584892918059-17R22UPGWHMKDQMKDF24/ke17ZwdGBToddI8pDm48kKSDrS25z1xhq8P__JxRgOdZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIfW1ATuP9MuMrzBl2d51f-E5RY99-G9tCqbNCQY7WbDkKMshLAGzx4R3EDFOm1kBS/image-asset.jpeg" alt="Card image cap" style="height: 300px;"></a>
+              <div class="card-body">
+                <p class="card-text">15 Cooking Tips That'll Change Every Home Cook's Life</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <div class="card">
+              <a href="https://theeverygirl.com/10-basic-cooking-tricks-you-should-know/"><img class="card-img-top" src="https://images-ext-1.discordapp.net/external/VVnv04CKAR2FP_r8V0_43Vpwdehh9hRvtQm76r_kW6Y/https/i.pinimg.com/originals/47/55/9d/47559dae23f1adc46279c7e2b49923fa.jpg" alt="Card image cap" style="height: 300px;"></a>
+              <div class="card-body">
+                <p class="card-text">10 Basic Cooking Tricks You Should Know</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <div class="card">
+              <a href="https://www.tasteofhome.com/collection/easy-party-food-ideas/"><img class="card-img-top" src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Best-Deviled-Eggs_EXPS_GHBZ18_2043_E08_08_7b-3.jpg" alt="Card image cap" style="height: 300px;"></a>
+              <div class="card-body">
+                <p class="card-text">100 Easy Party Food Ideas You’ll Make All the Time</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    
     </div>
     <footer class="footer">
       <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
