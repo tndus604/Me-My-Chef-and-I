@@ -49,7 +49,7 @@ function addItem(category, item, quantity, image_url ){
 }
 
 function removeItem(id){
-    return db.query( 'DELETE FROM food WHERE id=?', id);
+    return db.query( 'DELETE FROM fridge WHERE id=?', id);
 }
 
 // function moveItem(id) {
@@ -63,8 +63,4 @@ function updateFridge(id){
     return db.query ('INSERT INTO fridge ( item, is_rotten, quantity, image_url ) SELECT item, is_rotten, quantity, image_url FROM food WHERE food.id=?', id);
 }
 
-<<<<<<< HEAD
-module.exports = { selectAll, showItem, addItem, removeItem, updateItem};
-=======
 module.exports = { selectAll, showItem, addItem, removeItem, showFridge, updateFridge};
->>>>>>> Haley

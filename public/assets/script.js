@@ -52,12 +52,13 @@ async function itemList( category='' ) {
 
 async function displayFridgeList (){
     const getResponse = await apiCall('/api/fridge');
-    var renderFridge = document.querySelector('#renderFridge');
+	var renderFridge = document.querySelector('#renderFridge');
+	renderFridge.innerHTML = '';
     getResponse.forEach( function(data) {
         renderFridge.innerHTML += `
 		<div class="col-6">
 			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<div>${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+			<div>${data.item} <button class="btn btn-danger" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button></div>
 		</div>
     `
     })
@@ -78,12 +79,70 @@ async function addToFridge(data){
         renderFridge.innerHTML += `
 		<div class="col-6">
 			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<div${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+			<div${data.item} <button class="btn btn-danger delitem" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button></div>
 		</div>
         `
     })
 }
 
+
+
+// Delete item from fridge
+//   $(".delitem").on("click", function(event) {
+//     // Get the ID from the button.
+//     // This is shorthand for $(this).attr("data-planid")
+//     var id = $(this).data("itemid");
+
+//     // Send the DELETE request.
+//     $.ajax("/api/fridge/" + id, {
+//       type: "DELETE"
+//     }).then(
+//       function() {
+//         console.log("deleted id ", id);
+//         // Reload the page to get the updated list
+//         location.reload();
+//       }
+//     );
+//   });
+
+async function removeItem(id){
+	console.log(`removing item ${id}`)
+	const deleteResponse = await apiCall( `/api/fridge/${id}`, 'delete');
+	console.log('[foodDeleted] ', deleteResponse )
+	displayFridgeList ();
+}
+// Delete an item
+// app.delete("/api/fridge/:id", function(req, res) {
+// 	connection.query("DELETE FROM fridge WHERE id = ?", [req.params.id], function(err, result) {
+// 	  if (err) {
+// 		// If an error occurred, send a generic server failure
+// 		return res.status(500).end();
+// 	  }
+// 	  else if (result.affectedRows === 0) {
+// 		// If no rows were changed, then the ID must not exist, so 404
+// 		return res.status(404).end();
+// 	  }
+// 	  res.status(200).end();
+  
+// 	});
+//   });
+  
+
+// function deleteFromFridge() {
+// 	console.log("Deleting item...\n");
+// 	connection.query(
+// 	  "DELETE FROM fridge WHERE ?",
+// 	  {
+// 		id: ""
+// 	  },
+// 	  function(err, res) {
+// 		if (err) throw err;
+// 		console.log(res.affectedRows + " products deleted!\n");
+// 		// Call readProducts AFTER the DELETE completes
+// 		readProducts();
+// 	  }
+// 	);
+//   }
 
 async function addItem(event) {
 	event.preventDefault()

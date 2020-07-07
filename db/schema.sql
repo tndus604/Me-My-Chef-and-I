@@ -10,9 +10,7 @@ CREATE TABLE food (
     is_rotten BOOLEAN DEFAULT FALSE,
     quantity INT DEFAULT 5,
     image_url TEXT NOT NULL
-<<<<<<< HEAD
 
-=======
 );
 
 CREATE TABLE fridge (
@@ -22,5 +20,5 @@ CREATE TABLE fridge (
     is_rotten BOOLEAN DEFAULT FALSE,
     quantity INT DEFAULT 5,
     image_url TEXT NOT NULL
->>>>>>> Haley
+
 );
