@@ -57,4 +57,4 @@ function updateItem(quantity, id) {
 }
 
 
-module.exports = { selectAll, showItem, addItem, removeItem, updateItem, moveItem };
+module.exports = { selectAll, showItem, addItem, removeItem, updateItem};
