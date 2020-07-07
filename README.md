@@ -15,7 +15,7 @@
 [Click Here to checkout a deployed application](add links here)
 
 ### Screenshots
-![Eat-Da-Burger](addscreenshotshere.png)
+![Me Mychef and I](addscreenshotshere.png)
 
 ## Installation
 
