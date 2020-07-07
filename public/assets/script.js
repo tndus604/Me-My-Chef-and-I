@@ -135,8 +135,8 @@ function showData() {
 		for (i=0 ; i<response.length; i++) {
 			var recipeID = response[i].id;
 			recipeResult.innerHTML += `
-			<div class="col-sm-12 col-md-4">
-				<img src="${response[i].image}">
+			<div class="col-sm-12 col-md-4 recipe-image">
+				<img class="recipeFood-image" src="${response[i].image}">
 			</div>
 			<div class="col-sm-12 col-md-8">
 				<p><strong>${response[i].title}</strong>
@@ -148,7 +148,7 @@ function showData() {
 					${response[i].missedIngredients[3] ? `<li>${response[i].missedIngredients[3].name}` : ``}
 					${response[i].missedIngredients[4] ? `<li>${response[i].missedIngredients[4].name}` : ``}
 				</ul>
-				<button class="btn btn-primary" onClick="showInstruction(${recipeID})">Detail</button>
+				<button class="btn step-btn" onClick="showInstruction(${recipeID})">Instruction</button>
 				<ol id="showDetail${recipeID}"></ol>
 			</div>
 			`;
@@ -167,6 +167,7 @@ function showInstruction(recipeID) {
 			"x-rapidapi-key": "642fe22188msha6dd6111fa42a5cp18c081jsn4095bcf2f4c1"
 		}
 	}
+
 	$.ajax(settings).done(function (data) {
 		console.log(data);
 		var showDetail = document.querySelector('#showDetail'+recipeID);
@@ -177,6 +178,6 @@ function showInstruction(recipeID) {
 				${data[i].steps[j] ? `<li>${data[i].steps[j].step}</li>` : `<li>Sorry there's no detailed recipe :(</li>`}
 				`
 			}
-		}
+		}	
 	})
-}
+};
