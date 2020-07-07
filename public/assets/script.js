@@ -49,10 +49,6 @@ async function itemList( category='' ) {
     })
 }
 
-async function addItem(event){
-    event.preventDefault();
-    console.log(`additem will begins`)
-
 async function displayFridgeList (){
     const getResponse = await apiCall('/api/fridge');
     var renderFridge = document.querySelector('#renderFridge');
@@ -73,18 +69,25 @@ async function addToFridge(data){
     console.log(fridgeItem);
     const savedResponse = await apiCall('/api/food', 'put', fridgeItem);
     console.log('saveResponse: ', savedResponse );
-
-    var renderFridge = document.querySelector('#renderFridge');
+	
+	var renderFridge = document.querySelector('#renderFridge');
+	
+	renderFridge.innerHTML = '';
     const getResponse = await apiCall('/api/fridge')
-    renderFridge.innerHTML = ''
     getResponse.forEach( function(data) {
         renderFridge.innerHTML += `
 		<div class="col-6">
 			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<div${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+			<div${data.item} <button class="btn btn-danger" onclick="removeItem(this.id)" id="${data.id}"><i class="fa fa-trash"></i></button></div>
 		</div>
         `
     })
+}
+
+async function removeItem(id){
+	const deleteResponse = await apiCall( `/api/fridge/${id}`, 'delete');
+	console.log('[foodDeleted] ', deleteResponse )
+	displayFridgeList();
 }
 
 
@@ -113,19 +116,15 @@ async function addItem(event) {
 	if(saveResponse.status) {
 		itemList(newItem.category)
 	}
-}
-
-
-
-    var fridgeIngredient = document.querySelector('#fridge-ingredient');
-    const getResponse = await apiCall('/api/fridge')
-    fridgeIngredient.innerHTML = ''
-    getResponse.forEach( function(data) {
-        fridgeIngredient.innerHTML += 
-        `
-            <img src="${data.image_url}" /><span>${data.item}</span>
-        `
-    })
+    // var fridgeIngredient = document.querySelector('#fridge-ingredient');
+    // const getResponse = await apiCall('/api/fridge')
+    // fridgeIngredient.innerHTML = ''
+    // getResponse.forEach( function(data) {
+    //     fridgeIngredient.innerHTML += 
+    //     `
+    //         <img src="${data.image_url}" /><span>${data.item}</span>
+    //     `
+    // })
 }
 // ------------------------Spoonacular API-------------------------------
 
