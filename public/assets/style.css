@@ -63,16 +63,16 @@ nav {
     height: 350px;
     margin-top: 20px;
     border-radius: 0;
-    padding-top:10%;
+    padding-top:13%;
 }
 
 
-.main-menu {
+/* .main-menu {
     padding-top: 70px;
-}
+} */
 
 .contentImg {
-    height: 200px;
+    height: 250px;
 }
 
 #searchBtn {
@@ -126,7 +126,7 @@ nav {
     padding-top:10%;
 }
 
-#blog {
+#subtitle {
     font-family: 'Poiret One', cursive;
     border-bottom: 1px solid lightgray; 
     line-height: 0.1em;
