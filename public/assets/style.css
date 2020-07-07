@@ -54,18 +54,18 @@ nav {
 
 .jumbotron {
     background-image: url("https://images.agoramedia.com/everydayhealth/gcms/What-Is-a-Plant-Based-Diet-Beginners-Guide-Food-List-Benefits-722x406.jpg");
-    color: white;
     text-shadow: 1px 0px 10px rgb(0, 0, 0);
+    color: white;
     background-size: cover;
-    background-color: white;
     background-position: center;
     position: relative;
     width: 100%;
-    height: auto;
-    margin: 0;
+    height: 350px;
+    margin-top: 20px;
     border-radius: 0;
-    padding-top: 10%;
+    padding-top:10%;
 }
+
 
 .main-menu {
     padding-top: 70px;
@@ -122,16 +122,30 @@ nav {
 /* RECIPE.html */
 #jumbotron2 {
     background-image: url("https://honestcooking.com/wp-content/uploads/2015/09/shutterstock_198603584.jpg");
+    height: 250px;
+    padding-top:10%;
 }
 
-#cardContent {
-    margin-top: 50px;
+#blog {
+    font-family: 'Poiret One', cursive;
+    border-bottom: 1px solid lightgray; 
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+    margin-bottom: 50px;
+    margin-top: 100px;
 }
 
-.recipeFood-image{
-    max-width: 310px;
-    height: auto;
+h2 span { 
+    background:#fff; 
+    padding:0 10px; 
 }
+
+.card{
+    margin: 2%;
+    height: 400px;
+}
+
+
 .recipeSearch-btn{
     border: 1px solid rgba(255, 255, 255, 0.363);
     color: rgb(255, 255, 255);

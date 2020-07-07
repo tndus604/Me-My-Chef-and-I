@@ -20,21 +20,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-  <!-- <nav class="navbar navbar-light bg-light flex-column">
-    <a class="navbar-brand text-center" href="index.html" style="font-size: 50px;">Me MyChef & I</a>
-    <ul class="navbar-nav flex-row" style="border-top: 1px solid black; border-bottom: 1px solid black;">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="portfolio.html" style="margin-left: 30px">Ingredients</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contact.html" style="margin-left: 30px">Recipes</a>
-      </li>
-    </ul>
-  </nav> -->
-
   <nav class="navbar flex-column">
     <a class="navbar-brand text-center" href="index.html" style="font-size: 50px; padding-top: 30px; padding-bottom: 30px;">Me MyChef & I</a>
       <ul class="nav justify-content-center" style="border-top: 1px black solid; border-bottom: 1px black solid">
@@ -53,7 +38,7 @@
     <div class="container">
       <div id="jumbotron2" class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1>Food is the most precious thing.</h1>
+          <h1>Search for the recipe</h1>
           <div class="input-group mb-3">
             <input type="text" id="ingredientInput" class="form-control" placeholder="Type ingredients">
             <div class="input-group-append">
@@ -63,36 +48,40 @@
         </div>
       </div>
 
-      <div class="row" id="cardContent">
-        <div class="col-sm-12 col-md-4">
-          <div class="card">
-            <img class="card-img-top" src="https://images-ext-1.discordapp.net/external/nwwyFmqUBHQm_T1SXS55ilK4hTUlTtUOiQLndM07g88/https/i.pinimg.com/originals/b8/af/4b/b8af4b4c5893b115d8ef9357d9d22b24.jpg?width=600&height=600" alt="Card image cap" style="height: 300px;">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <div id="recipeResult" class="row">
+    
+      </div>
+
+      <div id="tips">
+        <h2 id="blog"><span>Useful Cooking Ideas</span></h2>
+        <div class="row" id="cardContent">
+          <div class="col-sm-12 col-md-4">
+            <div class="card">
+              <a href="https://www.delish.com/kitchen-tools/kitchen-secrets/g25585978/best-cooking-tips/"><img class="card-img-top" src="https://images.squarespace-cdn.com/content/v1/529fc0c0e4b088b079c3fb6d/1584892918059-17R22UPGWHMKDQMKDF24/ke17ZwdGBToddI8pDm48kKSDrS25z1xhq8P__JxRgOdZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIfW1ATuP9MuMrzBl2d51f-E5RY99-G9tCqbNCQY7WbDkKMshLAGzx4R3EDFOm1kBS/image-asset.jpeg" alt="Card image cap" style="height: 300px;"></a>
+              <div class="card-body">
+                <p class="card-text">15 Cooking Tips That'll Change Every Home Cook's Life</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-          <div class="card">
-            <img class="card-img-top" src="https://images-ext-1.discordapp.net/external/VVnv04CKAR2FP_r8V0_43Vpwdehh9hRvtQm76r_kW6Y/https/i.pinimg.com/originals/47/55/9d/47559dae23f1adc46279c7e2b49923fa.jpg" alt="Card image cap" style="height: 300px;">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="col-sm-12 col-md-4">
+            <div class="card">
+              <a href="https://theeverygirl.com/10-basic-cooking-tricks-you-should-know/"><img class="card-img-top" src="https://images-ext-1.discordapp.net/external/VVnv04CKAR2FP_r8V0_43Vpwdehh9hRvtQm76r_kW6Y/https/i.pinimg.com/originals/47/55/9d/47559dae23f1adc46279c7e2b49923fa.jpg" alt="Card image cap" style="height: 300px;"></a>
+              <div class="card-body">
+                <p class="card-text">10 Basic Cooking Tricks You Should Know</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-          <div class="card">
-            <img class="card-img-top" src="https://images-ext-2.discordapp.net/external/dEyeD4ixHqm3KfvSZ1dA7snokbR5X9w1vtouLTssexs/https/cdn.cheapism.com/images/070816_fancy_food_show_trends_for_cheap_slid.max-420x243_WY0f1Hv.jpg" alt="Card image cap" style="height: 300px;">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="col-sm-12 col-md-4">
+            <div class="card">
+              <a href="https://www.tasteofhome.com/collection/easy-party-food-ideas/"><img class="card-img-top" src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Best-Deviled-Eggs_EXPS_GHBZ18_2043_E08_08_7b-3.jpg" alt="Card image cap" style="height: 300px;"></a>
+              <div class="card-body">
+                <p class="card-text">100 Easy Party Food Ideas You’ll Make All the Time</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     
-        <div id="recipeResult" class="row">
-    
-        </div>
     </div>
     <footer class="footer">
       <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
