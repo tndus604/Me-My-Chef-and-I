@@ -52,13 +52,15 @@ function removeItem(id){
     return db.query( 'DELETE FROM food WHERE id=?', id);
 }
 
-function moveItem(id) {
-    return db.query( 'SELECT * FROM food WHERE id=?', id);
-}
-
-// function saveFridge() {
-//     return db.query( 'SELECT * FROM food ' );
+// function moveItem(id) {
+//     return db.query( 'SELECT * FROM food WHERE id=?', id);
 // }
 
+function showFridge() {
+    return db.query( 'SELECT * FROM fridge');
+}
+function updateFridge(id){
+    return db.query ('INSERT INTO fridge ( item, is_rotten, quantity, image_url ) SELECT item, is_rotten, quantity, image_url FROM food WHERE food.id=?', id);
+}
 
-module.exports = { selectAll, showItem, addItem, removeItem, moveItem};
+module.exports = { selectAll, showItem, addItem, removeItem, showFridge, updateFridge};

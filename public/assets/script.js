@@ -35,43 +35,53 @@ async function itemList( category='' ) {
     console.log(`[itemList] category=${category}`, itemList)
 
     const renderItem = document.querySelector('#renderItem')
-	renderItem.innerHTML = ''
+    renderItem.innerHTML = ''
 
     itemList.forEach( function(data) {
         renderItem.innerHTML += `
         <div class="col-3">
+        <button class="btn" onclick="addToFridge(this)" id="${data.id}" name="${data.item}" is_rotten="${data.is_rotten}">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-        <button class="btn" onclick="moveItem(id='${data.id}')">${data.item}</button>
+        <p>${data.item}</p>
+        </button>
         </div>
         `
-	})
+    })
 }
 
-async function moveItem(id=''){
-	const itemIdList = await apiCall('/api/food/ingredient' + (id? `/${id}` : ''))
-	console.log(`[itemId] itemId=${id}`, itemIdList)
 
-	const renderFridge = document.querySelector('#renderFridge');
-
-	itemIdList.forEach(function(data) {
-
-		// const savedItem =  {
-		// 	id: data.id,
-		// 	category: data.category,
-		// 	item: data.item,
-		// 	is_rotten: data.is_rotten,
-		// 	quantity: data.quantity,
-		// 	image_url: data.image_url
-		// }
-
-		renderFridge.innerHTML += `
-		<li>
+async function displayFridgeList (){
+    const getResponse = await apiCall('/api/fridge');
+    var renderFridge = document.querySelector('#renderFridge');
+    getResponse.forEach( function(data) {
+        renderFridge.innerHTML += `
+		<div class="col-6">
 			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<p>${data.item}</p>
-			<button class="btn onclick="deleteItem(id='${data.id}')">Delete</button>
-		</li>
-		`
-	})
+			<div>${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+		</div>
+    `
+    })
+}
+async function addToFridge(data){
+    const fridgeItem = {
+        id: data.id,
+        item: data.name
+    }
+    console.log(fridgeItem);
+    const savedResponse = await apiCall('/api/food', 'put', fridgeItem);
+    console.log('saveResponse: ', savedResponse );
+
+    var renderFridge = document.querySelector('#renderFridge');
+    const getResponse = await apiCall('/api/fridge')
+    renderFridge.innerHTML = ''
+    getResponse.forEach( function(data) {
+        renderFridge.innerHTML += `
+		<div class="col-6">
+			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
+			<div${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+		</div>
+        `
+    })
 }
 
 
