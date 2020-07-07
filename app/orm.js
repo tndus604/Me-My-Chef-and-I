@@ -45,48 +45,16 @@ function showItem(category) {
     return db.query( 'SELECT * FROM food WHERE category=?', category );
 }
 
-<<<<<<< HEAD
-function addItem(item, category, quantity, image_url ){
-    return db.query( 'INSERT INTO food (item, category, quantity, image_url) VALUES (?,?,?,?)', [item, category, quantity, image_url] );
-=======
 function addItem(category, item, quantity, image_url ){
     return db.query( 'INSERT INTO food (category, item, quantity, image_url) VALUES (?,?,?,?)', [category, item, quantity, image_url] );
->>>>>>> Haley
 }
 
 function removeItem(id){
     return db.query( 'DELETE FROM food WHERE id=?', id);
 }
 
-<<<<<<< HEAD
-function updateItem(quantity, id) {
-    return db.query( 'UPDATE food SET quantity=? WHERE id=?', [quantity, id]);
-}
-
-function showFridge() {
-    return db.query( 'SELECT * FROM fridge');
-}
-function updateFridge(id){
-    return db.query ('INSERT INTO fridge ( item, is_rotten, quantity, image_url ) SELECT item, is_rotten, quantity, image_url FROM food WHERE food.id=?', id);
-}
-// Future Plans: When quantity is updated, is_rotten resets. 
-
-
-// function insertData( priority, info, due ){
-//     if( priority === '' ) {
-//         priority = 'primary'
-//     }
-//     // no due? set to 7 days from now
-//     if( due === '' ) {
-//         due = moment().add(7, 'days').format('YYYY-MM-DD' )
-//     }
-//     console.log( ' inserting task data: ', { priority, info, due } )
-//     return db.query( 'INSERT INTO tasks SET ? ',
-//         { priority, info, due } )
-=======
 // function moveItem(id) {
 //     return db.query( 'SELECT * FROM food WHERE id=?', id);
->>>>>>> Haley
 // }
 
 function showFridge() {
@@ -96,8 +64,4 @@ function updateFridge(id){
     return db.query ('INSERT INTO fridge ( item, is_rotten, quantity, image_url ) SELECT item, is_rotten, quantity, image_url FROM food WHERE food.id=?', id);
 }
 
-<<<<<<< HEAD
-module.exports = { selectAll, showItem, addItem, removeItem, updateItem, showFridge, updateFridge};
-=======
 module.exports = { selectAll, showItem, addItem, removeItem, showFridge, updateFridge};
->>>>>>> Haley
