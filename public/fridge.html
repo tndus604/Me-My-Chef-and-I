@@ -68,7 +68,7 @@
                     <input type="text" class="form-control" id="image_url" placeholder="Insert Image URL Here!">
                   </div>
                 </div>
-                <button class="btn submitIngreBtn" onclick='addItem(event)' type="submit">Submit</button>
+                <button class="btn submitIngreBtn" type="submit" onclick="addItem(event)">Submit</button>
               </form>
         </div>
         <!-- https://cdn.onlinewebfonts.com/svg/img_19587.png -->
@@ -92,9 +92,9 @@
       <img src="./assets/fridge3.png" style="height: 50px;"><span style="font-size: 30px; padding-top: 10px;">Your Fridge</span>
       <!-- Fridge List -->
       <div class="container" style="border: 1px solid black">
-        <ul id='fridge-ingredient'>
+        <div class="row" id='renderFridge'>
 
-        </ul>
+        </div>
       </div>
     </div>
   </div>

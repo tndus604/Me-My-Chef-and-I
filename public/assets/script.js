@@ -53,38 +53,15 @@ async function addItem(event){
     event.preventDefault();
     console.log(`additem will begins`)
 
-    const newItem = {
-        category: document.querySelector('#category').value,
-        item: document.querySelector('#itemName').value,
-        quantity: document.querySelector('#quantity').value,
-        image_url: document.querySelector('#image_url').value
-    }
-
-    document.querySelector('#category').value = '';
-    document.querySelector('#itemName').value = '';
-    document.querySelector('#quantity').value = '',
-    document.querySelector('#image_url').value = '';
-
-    if (!newItem.image_url){
-        newItem.image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSd2ZSGjR-kIYsWVqqgYJH5g-Aowx8abKcADw&usqp=CAU'
-    }
-    console.log( `added item :` , newItem);
-    
-    const saveResponse = await apiCall('/api/food', 'post', newItem);
-    console.log('saveResponse: ', saveResponse );
-
-    if (saveResponse.status){
-        itemList(newItem.category);
-    }
-    
-}
 async function displayFridgeList (){
     const getResponse = await apiCall('/api/fridge');
-    var fridgeIngredient = document.querySelector('#fridge-ingredient');
+    var renderFridge = document.querySelector('#renderFridge');
     getResponse.forEach( function(data) {
-        fridgeIngredient.innerHTML += 
-        `
-        <img src="${data.image_url}" /><span>${data.item}</span>
+        renderFridge.innerHTML += `
+		<div class="col-6">
+			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
+			<div>${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+		</div>
     `
     })
 }
@@ -96,6 +73,49 @@ async function addToFridge(data){
     console.log(fridgeItem);
     const savedResponse = await apiCall('/api/food', 'put', fridgeItem);
     console.log('saveResponse: ', savedResponse );
+
+    var renderFridge = document.querySelector('#renderFridge');
+    const getResponse = await apiCall('/api/fridge')
+    renderFridge.innerHTML = ''
+    getResponse.forEach( function(data) {
+        renderFridge.innerHTML += `
+		<div class="col-6">
+			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
+			<div${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
+		</div>
+        `
+    })
+}
+
+
+async function addItem(event) {
+	event.preventDefault()
+	
+	const newItem = {
+		category: document.querySelector('#category').value,
+		item: document.querySelector('#itemName').value,
+		quantity: document.querySelector('#quantity').value,
+		image_url: document.querySelector('#image_url').value
+	}
+
+	document.querySelector('#category').value = '';
+	document.querySelector('#itemName').value = '';
+	document.querySelector('#quantity').value = '';
+	document.querySelector('#image_url').value = '';
+	if (!newItem.image_url){
+        newItem.image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSd2ZSGjR-kIYsWVqqgYJH5g-Aowx8abKcADw&usqp=CAU'
+    }
+	console.log('[addItem] itemData =', newItem);
+
+	const saveResponse = await apiCall('/api/food', 'post', newItem)
+	console.log('[saveResponse]', saveResponse)
+
+	if(saveResponse.status) {
+		itemList(newItem.category)
+	}
+}
+
+
 
     var fridgeIngredient = document.querySelector('#fridge-ingredient');
     const getResponse = await apiCall('/api/fridge')
@@ -141,7 +161,7 @@ function showData() {
 					${response[i].missedIngredients[3] ? `<li>${response[i].missedIngredients[3].name}` : ``}
 					${response[i].missedIngredients[4] ? `<li>${response[i].missedIngredients[4].name}` : ``}
 				</ul>
-				<button class="btn step-btn" onClick="showInstruction(${recipeID})">Detail</button>
+				<button class="btn step-btn" onClick="showInstruction(${recipeID})">Instruction</button>
 				<ol id="showDetail${recipeID}"></ol>
 			</div>
 			`;
@@ -159,32 +179,18 @@ function showInstruction(recipeID) {
 			"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
 			"x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
 		}
-    }
-    var clicks = 0;
-    
+	}
+
 	$.ajax(settings).done(function (data) {
 		console.log(data);
 		var showDetail = document.querySelector('#showDetail'+recipeID);
-        showDetail.innerHTML = '';
-        
-        if (clicks % 2 === 0){
-            for (var i=0; i<data.length; i++) {
-                for (var j=0; j<data[i].steps.length; j++) {
-                    showDetail.innerHTML += `
-                    <li>${data[i].steps[j].step}</li>
-                    `
-                    // if( data.length = 0 ){
-                    //     showDetail.innerHTML += `No Instruction Available`
-                    //     console.log(`where is zero`)
-                    // }     NEED FIX*******************WHEN NO STEPS FOUND
-                }
-            }
-        }
-        else {
-            showDetail.innerHTML = ''
-        }
-        clicks++
-    })
+		showDetail.innerHTML = '';
+		for (var i=0; i<data.length; i++) {
+			for (var j=0; j<data[i].steps.length; j++) {
+				showDetail.innerHTML += `
+				${data[i].steps[j] ? `<li>${data[i].steps[j].step}</li>` : `<li>Sorry there's no detailed recipe :(</li>`}
+				`
+			}
+		}	
+	})
 };
-
-

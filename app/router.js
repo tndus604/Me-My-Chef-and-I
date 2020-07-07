@@ -11,12 +11,32 @@ function router( app ){
 
     app.post('/api/food', async function(req, res) {
         console.log( '[POST] we received this data:', req.body )
+<<<<<<< HEAD
         const saveResult = await orm.addItem( req.body.item, req.body.category, req.body.quantity, req.body.image_url )
+=======
+        if( !req.body.item ){
+            console.log( "sorry no item data found!" )
+            res.send( { status: false, message: "No message data found" } )
+        }
+        const saveResult = await orm.addItem( req.body.category, req.body.item, req.body.quantity, req.body.image_url )
+
+>>>>>>> Haley
         console.log( `... insertId: ${saveResult.insertId} ` )
 
         res.send( { status: true, insertId: saveResult.insertId, message: 'Saved successfully' } )
     });
 
+<<<<<<< HEAD
+=======
+    // app.get('/api/food/ingredient/:id', async function(req, res) {
+    //     const foodId = req.params.id;
+    //     console.log(`[GET] putting food into fridge, id=${foodId}`);
+    //     const listById = await orm.moveItem(foodId);
+
+    //     res.send( listById );
+    // });
+
+>>>>>>> Haley
     app.get('/api/fridge', async function(req, res) {
         // const ingredient = req.params.id
        const listFromFridge = await orm.showFridge();
@@ -34,6 +54,7 @@ function router( app ){
         console.log( '... ', saveResult )
         res.send( { status: true, message: 'Updated successfully' } )
     });
+
 
     app.delete('/api/food/:id', async function(req, res) {
         const taskId = req.params.id
