@@ -49,12 +49,8 @@ function addItem(category, item, quantity, image_url ){
 }
 
 function removeItem(id){
-    return db.query( 'DELETE FROM food WHERE id=?', id);
+    return db.query( 'DELETE FROM fridge WHERE id=?', id);
 }
-
-// function moveItem(id) {
-//     return db.query( 'SELECT * FROM food WHERE id=?', id);
-// }
 
 function showFridge() {
     return db.query( 'SELECT * FROM fridge');

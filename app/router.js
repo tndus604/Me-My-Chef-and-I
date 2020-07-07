@@ -49,12 +49,13 @@ function router( app ){
     });
 
 
-    app.delete('/api/food/:id', async function(req, res) {
-        const taskId = req.params.id
-        console.log( `[DELETE] id=${taskId}` )
-        const deleteResult = await orm.removeItem( taskId )
-        console.log( '... ', deleteResult )
+    app.delete('/api/fridge/:id', async function(req, res) {
+        const ingredientId = req.params.id
+        console.log( `[DELETE] id=${ingredientId}` )
+        const deleteResult = await orm.removeItem( ingredientId )
 
+        console.log( '... ', deleteResult )
+    
         res.send( { status: true, message: 'Deleted successfully' } )
     });
 }
