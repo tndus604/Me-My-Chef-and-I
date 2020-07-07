@@ -111,3 +111,36 @@ nav {
         font-size: 25px;
     }
 }
+
+/* RECIPE.html */
+.recipeFood-image{
+    max-width: 310px;
+    height: auto;
+}
+.recipeSearch-btn{
+    border: 1px solid rgb(40,75,29);
+    color: rgb(40,75,29);
+}
+
+.recipeSearch-btn:hover {
+    background: rgb(40,75,29);
+    color: white;
+}
+
+.step-btn {
+    background: rgb(57,131,066);
+    color: white;
+    border-radius: 2rem;
+}
+
+.step-btn:hover{
+    background: none;
+    color: rgb(57,131,066);
+    border: 2px solid rgb(57,131,066);
+}
+
+@media (max-width: 767px) {
+    .recipe-image {
+        text-align: center;
+    }
+}
