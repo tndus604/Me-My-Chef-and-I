@@ -1,3 +1,4 @@
+require( 'dotenv' ).config();
 const mysql = require('mysql');
 // an external npm package we are using
 
