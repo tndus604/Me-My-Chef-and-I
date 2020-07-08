@@ -28,14 +28,21 @@ class Database {
     }
 }
 
-const db = new Database({
-    host: 'localhost',
+const db  = {
+    host: process.env.DB_HOST,
     port: 3306,
     user: process.env.DB_USER,
     password: process.env.DB_PWD,
-    database: process.env.DB_NAME,
-    insecureAuth : true
-});
+    database: process.env.DB_NAME
+  };
+  
+var connection;
+  if (process.env.JAWSDB_URL){
+      connection = new Database(process.env.JAWSDB_URL);
+  }
+  else {
+      connection = new Database(db);
+  }
 
 function selectAll( ){
     return db.query( 'SELECT * FROM food' );
