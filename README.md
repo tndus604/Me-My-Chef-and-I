@@ -3,23 +3,32 @@
 ## Table of Contents
 - [Description](#description)
 - [Demo](#demo)
-- [Installation](#installation) 
-- [Usage](#usage) 
+- [Installation](#installation)  
 - [Questions](#questions)
 - [License](#license)
 
 ## Description
+Me MyChef and I is web application designed to offer users delicous recipes based on what food they have in their home fridge. The web app uses API'S from spoonacular.com, which has 2600+ indgredients and 360k+ recipes. To get started, users simply click on the "Check Your Fridge" icon. From there, you can view, add or remove food from your fridge. It will automatically save, which makes it easy to update and also delete if food has gone bad. Once your fridge is up to date, click on the "Find Recipe" icon and recipes from spoonacular appear for the user, based on the updated fridge.
 
 ## Demo
-#### Heroku URL
+### Heroku URL
 [Click Here to checkout a deployed application](add links here)
 
 ### Screenshots
 ![Me Mychef and I](addscreenshotshere.png)
 
 ## Installation
+### Local application 
+- Step 1: `npm install dotenv express mysql`
+- Step 2: `node server.js` (app will run in localhost:8080)
+- Step 3: In the `db` folder Use `schema.sql` and `seed.sql` to build a database.
 
-## Usage
+### Heroku appliaction
+- The Homepages has an option for an user to choose between `Ingredients` or `Recipe`.
+- `Ingredients` will gives users to input their ingredients in the fridge available at home to visualize in one way.
+- An user will be able to add/delete any ingredients they wish to do so. Also if the ingredient is not listed in the list by categories, they can add name, category, quantity, and an image url.
+- `Recipe` will gives users tips/facts about the food and links to blogs that has the best explanation.
+- Once the users enter ingredients in the search, the related recipe will be generated with an image of the recipe, recipe name, missing ingredients, and instructions on making recipe provided.
 
 ## License
 ![License](https://img.shields.io/badge/License-MIT%20License-blue)
