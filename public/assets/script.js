@@ -1,4 +1,3 @@
-// --------------------------------OUR API------------------------------------
 async function apiCall( url, method='get', data={} ){
     let settings = {
         method,
@@ -13,7 +12,8 @@ async function apiCall( url, method='get', data={} ){
 
     return result
 }
-// INGREDIENT ITEMS BY CATEGORY
+
+// getting ingredient info by category
 async function itemList( category='' ) {
     const itemList = await apiCall('/api/food' + (category ? `/${category}` : ''))
     console.log(`[itemList] category=${category}`, itemList)
@@ -33,35 +33,7 @@ async function itemList( category='' ) {
     })
 }
 
-// ADD ITEM BASED ON USER INPUT TO CATEGORY
-async function addItem(event) {
-	event.preventDefault()
-	
-	const newItem = {
-		category: document.querySelector('#category').value,
-		item: document.querySelector('#itemName').value,
-		quantity: document.querySelector('#quantity').value,
-		image_url: document.querySelector('#image_url').value
-	}
-
-	document.querySelector('#category').value = '';
-	document.querySelector('#itemName').value = '';
-	document.querySelector('#quantity').value = '';
-	document.querySelector('#image_url').value = '';
-	if (!newItem.image_url){
-        newItem.image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSd2ZSGjR-kIYsWVqqgYJH5g-Aowx8abKcADw&usqp=CAU'
-    }
-	console.log('[addItem] itemData =', newItem);
-
-	const saveResponse = await apiCall('/api/food', 'post', newItem)
-	console.log('[saveResponse]', saveResponse)
-
-	if(saveResponse.status) {
-		itemList(newItem.category)
-	}
-}
-
-// DISPLAY INGREDIENTS IN FRIDGE
+// Display items in FRIDGE
 async function displayFridgeList (){
     const getResponse = await apiCall('/api/fridge');
 	var renderFridge = document.querySelector('#renderFridge');
@@ -76,7 +48,7 @@ async function displayFridgeList (){
     })
 }
 
-// ADD INGREDIENTS TO FRIDGE
+// Add Ingredients to Fridge
 async function addToFridge(data){
     const fridgeItem = {
         id: data.id,
@@ -122,8 +94,8 @@ function showData() {
 				<img class="recipeFood-image" src="${response[i].image}">
 			</div>
 			<div class="col-sm-12 col-md-6 col-lg-8">
-				<p><strong>${response[i].title}</strong>
-				<br>Missing Ingredients:</p>
+				<h5><strong id="recipeTitle">${response[i].title}</strong></h5>
+				<p>Missing Ingredients:</p>
 				<ul>
 					${response[i].missedIngredients[0] ? `<li>${response[i].missedIngredients[0].name}` : ``}
 					${response[i].missedIngredients[1] ? `<li>${response[i].missedIngredients[1].name}` : ``}
