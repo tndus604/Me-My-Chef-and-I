@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,39 +14,39 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <!-- Font CSS LINK -->
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka+One&family=Titillium+Web&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <!-- local css link -->
     <link href="assets/style.css" rel="stylesheet">
     <!-- any NPM packages you want to include, you can directly include like this -->
     <script src="https://unpkg.com/moment"></script>
 </head>
-<body>
+<!-- onload="displayFridgeList(), itemList(category='vegetable')" -->
+<body onload="displayFridgeList(), itemList(category='vegetable')">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand title-logo" href="index.html" style="color: white;"><i class="fas fa-utensils"></i> Me MyChef & I</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right">
-      <ul class="navbar-nav ml-auto">
+  <nav class="navbar flex-column">
+    <a class="navbar-brand text-center" href="index.html" style="font-size: 50px; padding-top: 30px; padding-bottom: 30px;">Me MyChef & I</a>
+      <ul class="nav justify-content-center menu-list" style="border-top: 1px black solid; border-bottom: 1px black solid">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="fridge.html">Ingredients</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="recipe.html">Recipe</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="fridge.html">Check Your Fridge</a>
-        </li>
       </ul>
-    </div>
   </nav>
 
   <div class="container mt-4">
   <div class="row text-center">
     <div class="col-12 col-md-6 text-center">
       <div class="row">
-        <div class="col-12">
-              <form class="ingredient-input">
+
+        <div class="col-12 ingredient-input">
+              <form class="">
                 <div class="form-group">
-                  <label for="foodInfo">Insert New Ingredient</label>
+                  <label class="input-title" for="foodInfo">Insert New Ingredient</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <select class="form-control" id="category">
@@ -65,37 +66,35 @@
                     <input type="number" class="form-control" id="quantity" placeholder="Quantity">
                   </div>
                   <div class="col-8">
-                    <input type="text" class="form-control" placeholder="Insert Image URL Here!">
+                    <input type="text" class="form-control" id="image_url" placeholder="Insert Image URL Here!">
                   </div>
                 </div>
-                <button class="btn submitIngreBtn" type="submit">Submit</button>
+                <button class="btn submitIngreBtn" type="submit" onclick="addItem(event)">Submit</button>
               </form>
         </div>
-        <!-- https://cdn.onlinewebfonts.com/svg/img_19587.png -->
+
         <div class="col-12 btn-row mt-3 mb-3">
-        <button type="button vegi-btn" class="btn vegi-btn" onclick="itemList(category='vegetable')"><i class="fas fa-carrot"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='fruit')"><i class="fas fa-apple-alt"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='dairy')"><i class="fas fa-cheese"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='meat')"><i class="fas fa-drumstick-bite"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='seafood')"><i class="fas fa-fish"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='others')"><i class="fas fa-shopping-basket"></i></button>
+          <button type="button" class="btn category vegi-btn" onclick="itemList(category='vegetable')"><i class="fas fa-carrot"></i></button>
+          <button type="button" class="btn category fruit-btn" onclick="itemList(category='fruit')"><i class="fas fa-apple-alt"></i> </button>
+          <button type="button" class="btn category dairy-btn" onclick="itemList(category='dairy')"><i class="fas fa-cheese"></i></button>
+          <button type="button" class="btn category meat-btn" onclick="itemList(category='meat')"><i class="fas fa-drumstick-bite"></i></button>
+          <button type="button" class="btn category seafood-btn" onclick="itemList(category='seafood')"><i class="fas fa-fish"></i></button>
+          <button type="button" class="btn category others-btn" onclick="itemList(category='others')"><i class="fas fa-shopping-basket"></i></button>
         </div>
       </div>
 
-        <div class="row" id="renderItem">
-          
+        <div class="row overflow-auto item-by-category" id="renderItem">
         </div>
     </div>
 
     <div class="col-12 col-md-6 text-center">
       <!-- title -->
-      <img src="./assets/fridge3.png" style="height: 50px;"><span style="font-size: 30px; padding-top: 10px;">Your Fridge</span>
+      <h2 class="yourFridge"><span id="fridge-title">Your Fridge</span></h2>
       <!-- Fridge List -->
-      <div class="container" style="border: 1px solid black">
-        <ul id='fridge-ingredient'>
+        <div class="row" id='renderFridge'>
 
-        </ul>
-      </div>
+        </div>
+
     </div>
   </div>
 </div>
