@@ -1,20 +1,3 @@
-// function checkFridge() {
-//     var fridgeItems = document.getElementById("fridgeItems");
-//     var openFridge = document.getElementById("openFridge");
-//     var closeFridge = document.getElementById("closeFridge");
-//     fridgeItems.style.display = "block";
-//     openFridge.style.display = "block";
-//     closeFridge.style.display = "none";
-// }
-
-/* unlike node where we can pull in packages with npm, or react, for normal
-    webpages, we can use a cool resource called unpkg from the html page, so
-    in this example we use the moment npm package on both the server & client side */
-
-/*
-    note how we wrap our api fetch in this function that allows us to do some
-    additional error / message handling for all API calls...
-*/
 async function apiCall( url, method='get', data={} ){
     let settings = {
         method,
@@ -30,6 +13,7 @@ async function apiCall( url, method='get', data={} ){
     return result
 }
 
+// getting ingredient info by category
 async function itemList( category='' ) {
     const itemList = await apiCall('/api/food' + (category ? `/${category}` : ''))
     console.log(`[itemList] category=${category}`, itemList)
@@ -39,16 +23,17 @@ async function itemList( category='' ) {
 
     itemList.forEach( function(data) {
         renderItem.innerHTML += `
-        <div class="col-3">
-        <button class="btn" onclick="addToFridge(this)" id="${data.id}" name="${data.item}" is_rotten="${data.is_rotten}">
+        <div class="col-4">
+        <a class="btn" onclick="addToFridge(this)" id="${data.id}" name="${data.item}" is_rotten="${data.is_rotten}">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
         <p>${data.item}</p>
-        </button>
+        </a>
         </div>
         `
     })
 }
 
+<<<<<<< HEAD
 
 async function displayFridgeList (){
     const getResponse = await apiCall('/api/fridge');
@@ -144,6 +129,8 @@ async function removeItem(id){
 // 	);
 //   }
 
+=======
+>>>>>>> master
 async function addItem(event) {
 	event.preventDefault()
 	
@@ -172,6 +159,41 @@ async function addItem(event) {
 }
 
 
+// Display items in FRIDGE
+async function displayFridgeList (){
+    const getResponse = await apiCall('/api/fridge');
+	var renderFridge = document.querySelector('#renderFridge');
+	renderFridge.innerHTML = '';
+    getResponse.forEach( function(data) {
+        renderFridge.innerHTML += `
+		<div class="col-4">
+			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
+			<p>${data.item} <button class="delete-btn" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button></p>
+		</div>
+    `
+    })
+}
+
+// Add Ingredients to Fridge
+async function addToFridge(data){
+    const fridgeItem = {
+        id: data.id,
+        item: data.name
+    }
+    console.log(fridgeItem);
+    const savedResponse = await apiCall('/api/food', 'put', fridgeItem);
+    console.log('saveResponse: ', savedResponse );
+	
+	displayFridgeList();
+}
+
+// REMOVE ITEMS FROM FRIDGE
+async function removeItem(id){
+	console.log(`removing item ${id}`)
+	const deleteResponse = await apiCall( `/api/fridge/${id}`, 'delete');
+	console.log('[foodDeleted] ', deleteResponse )
+	displayFridgeList ();
+}
 
 // ------------------------Spoonacular API-------------------------------
 
@@ -194,12 +216,12 @@ function showData() {
 		for (i=0 ; i<response.length; i++) {
 			var recipeID = response[i].id;
 			recipeResult.innerHTML += `
-			<div class="col-sm-12 col-md-4 recipe-image">
+			<div class="col-sm-12 col-md-6 col-lg-4 recipe-image">
 				<img class="recipeFood-image" src="${response[i].image}">
 			</div>
-			<div class="col-sm-12 col-md-8">
-				<p><strong>${response[i].title}</strong>
-				<br>Missing Ingredients:</p>
+			<div class="col-sm-12 col-md-6 col-lg-8">
+				<h5><strong id="recipeTitle">${response[i].title}</strong></h5>
+				<p>Missing Ingredients:</p>
 				<ul>
 					${response[i].missedIngredients[0] ? `<li>${response[i].missedIngredients[0].name}` : ``}
 					${response[i].missedIngredients[1] ? `<li>${response[i].missedIngredients[1].name}` : ``}
@@ -223,7 +245,7 @@ function showInstruction(recipeID) {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-			"x-rapidapi-key": "642fe22188msha6dd6111fa42a5cp18c081jsn4095bcf2f4c1"
+			"x-rapidapi-key": "7d919f5728mshf027707abe93ba0p1301a8jsn156c49de9236"
 		}
 	}
 

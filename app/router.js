@@ -2,7 +2,7 @@ const orm = require('./orm');
 
 function router( app ){
     app.get('/api/food/:category?', async function(req, res) {
-        const foodCategory = req.params.category;
+         const foodCategory = req.params.category;
         console.log( `[GET] getting food categories, category=${foodCategory}`);
         const listByCategory = await orm.showItem( foodCategory );
 
@@ -48,15 +48,6 @@ function router( app ){
         res.send( { status: true, message: 'Updated successfully' } )
     });
 
-
-    // app.delete('/api/food/:id', async function(req, res) {
-    //     const taskId = req.params.id
-    //     console.log( `[DELETE] id=${taskId}` )
-    //     const deleteResult = await orm.removeItem( taskId )
-    //     console.log( '... ', deleteResult )
-
-    //     res.send( { status: true, message: 'Deleted successfully' } )
-    // });
 
     app.delete('/api/fridge/:id', async function(req, res) {
         const ingredientId = req.params.id
