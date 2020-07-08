@@ -24,10 +24,10 @@ async function itemList( category='' ) {
     itemList.forEach( function(data) {
         renderItem.innerHTML += `
         <div class="col-4">
-        <button class="btn" onclick="addToFridge(this)" id="${data.id}" name="${data.item}" is_rotten="${data.is_rotten}">
+        <a class="btn" onclick="addToFridge(this)" id="${data.id}" name="${data.item}" is_rotten="${data.is_rotten}">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
         <p>${data.item}</p>
-        </button>
+        </a>
         </div>
         `
     })
@@ -70,7 +70,7 @@ async function displayFridgeList (){
         renderFridge.innerHTML += `
 		<div class="col-4">
 			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<p>${data.item}</p><button class="btn btn-danger" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button>
+			<p>${data.item} <button class="delete-btn" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button></p>
 		</div>
     `
     })
