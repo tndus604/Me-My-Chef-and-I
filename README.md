@@ -15,7 +15,10 @@
 [Click Here to checkout a deployed application](add links here)
 
 ### Screenshots
-![Me Mychef and I](addscreenshotshere.png)
+![Me Mychef and I](./public/assets/image/screenshot-browser.png)
+![Mobile-Main](./public/assets/image/mobile-main.png)
+![Mobile-Ingredients](./public/assets/image/mobile-ingredients.png)
+![Mobile-Recipe](./public/assets/image/mobile-recipe.png)
 
 ## Installation
 ### Local application 
