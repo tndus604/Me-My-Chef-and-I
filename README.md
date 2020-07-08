@@ -12,7 +12,7 @@
 
 ## Demo
 ### Heroku URL
-[Click Here to checkout a deployed application](add links here)
+[Click Here to checkout a deployed application](https://lit-badlands-54539.herokuapp.com/)
 
 ### Screenshots
 ![Me Mychef and I](./public/assets/image/screenshot-browser.png)
