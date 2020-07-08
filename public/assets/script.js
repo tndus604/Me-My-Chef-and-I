@@ -1,20 +1,4 @@
-// function checkFridge() {
-//     var fridgeItems = document.getElementById("fridgeItems");
-//     var openFridge = document.getElementById("openFridge");
-//     var closeFridge = document.getElementById("closeFridge");
-//     fridgeItems.style.display = "block";
-//     openFridge.style.display = "block";
-//     closeFridge.style.display = "none";
-// }
 
-/* unlike node where we can pull in packages with npm, or react, for normal
-    webpages, we can use a cool resource called unpkg from the html page, so
-    in this example we use the moment npm package on both the server & client side */
-
-/*
-    note how we wrap our api fetch in this function that allows us to do some
-    additional error / message handling for all API calls...
-*/
 async function apiCall( url, method='get', data={} ){
     let settings = {
         method,
@@ -30,6 +14,7 @@ async function apiCall( url, method='get', data={} ){
     return result
 }
 
+// getting ingredient info by category
 async function itemList( category='' ) {
     const itemList = await apiCall('/api/food' + (category ? `/${category}` : ''))
     console.log(`[itemList] category=${category}`, itemList)
@@ -49,7 +34,7 @@ async function itemList( category='' ) {
     })
 }
 
-
+// Display items in FRIDGE
 async function displayFridgeList (){
     const getResponse = await apiCall('/api/fridge');
 	var renderFridge = document.querySelector('#renderFridge');
@@ -58,11 +43,13 @@ async function displayFridgeList (){
         renderFridge.innerHTML += `
 		<div class="col-4">
 			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<p>${data.item}</p><button class="btn btn-danger" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button>
+			<p>${data.item} <button class="delete-btn" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button></p>
 		</div>
     `
     })
 }
+
+// Add Ingredients to Fridge
 async function addToFridge(data){
     const fridgeItem = {
         id: data.id,
@@ -71,18 +58,8 @@ async function addToFridge(data){
     console.log(fridgeItem);
     const savedResponse = await apiCall('/api/food', 'put', fridgeItem);
     console.log('saveResponse: ', savedResponse );
-
-    var renderFridge = document.querySelector('#renderFridge');
-    const getResponse = await apiCall('/api/fridge')
-    renderFridge.innerHTML = ''
-    getResponse.forEach( function(data) {
-        renderFridge.innerHTML += `
-		<div class="col-4">
-			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<p>${data.item}</p><button class="btn btn-danger delitem" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button>
-		</div>
-        `
-    })
+	
+	displayFridgeList();
 }
 
 async function removeItem(id){
@@ -146,8 +123,8 @@ function showData() {
 				<img class="recipeFood-image" src="${response[i].image}">
 			</div>
 			<div class="col-sm-12 col-md-6 col-lg-8">
-				<p><strong>${response[i].title}</strong>
-				<br>Missing Ingredients:</p>
+				<h5><strong id="recipeTitle">${response[i].title}</strong></h5>
+				<p>Missing Ingredients:</p>
 				<ul>
 					${response[i].missedIngredients[0] ? `<li>${response[i].missedIngredients[0].name}` : ``}
 					${response[i].missedIngredients[1] ? `<li>${response[i].missedIngredients[1].name}` : ``}

@@ -67,10 +67,6 @@ nav {
 }
 
 
-/* .main-menu {
-    padding-top: 70px;
-} */
-
 .contentImg {
     height: 250px;
 }
@@ -81,41 +77,105 @@ nav {
 
 /* FRIDGE.html */
 .ingredient-input {
-    background-color: white;
     padding: 15px 10px;
-    border: 1px solid rgb(57,131,066);
-    border-radius: 10px;
+    background: rgb(141, 140, 140);
+}
+
+.input-title{
+    color: white;
+    font-size: 20px;
 }
 
 .submitIngreBtn {
-    background: rgb(40,75,29);
+    background: rgb(0, 0, 0);
     color: white;
     border-radius: 2rem;
     margin-top: 10px;
 }
 
-.vegi-btn, .category-btn{
-    background: rgb(57,131,066);
-    color: white;
+.submitIngreBtn:hover {
+    background: rgb(233, 208, 203);
+    color: black;
+    border: 1px solid black;
+}
+
+.category{
+    background: rgb(233, 208, 203);
+    color: rgb(58, 58, 58);
     font-size: 18px;
 }
 
-.category-btn:active, .vegi-btn:active {
+.vegi-btn:hover{
+    background: rgba(100, 224, 100, 0.548);
+}
+.fruit-btn:hover{
+    background: rgba(224, 149, 100, 0.548);
+}
+.dairy-btn:hover{
+    background: rgba(224, 211, 100, 0.548);
+}
+.meat-btn:hover{
+    background: rgba(224, 100, 100, 0.548);
+}
+.seafood-btn:hover{
+    background: rgba(100, 149, 224, 0.548);
+}
+.others-btn:hover{
+    background: rgba(108, 100, 224, 0.548);
+}
+
+.item-by-category{
+    background: rgba(218, 212, 210, 0.479);
+}
+
+.yourFridge {
+    font-family: 'Poiret One', cursive;
+    border-bottom: 1px solid lightgray; 
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+    margin-bottom: 30px;
+}
+.fridge-title{
+    background:#fff; 
+    padding:0 10px; 
+}
+.delete-btn {
+    border: 1px solid red;
     background: red;
+    color: white;
+    border-radius: 3px;
+}
+.delete-btn:hover{
+    color: red;
+    background: white;
+    border: 1px solid red;
 }
 
 @media (min-width: 330px) {
-    .category-btn {
-        margin-left: 8px;
+    .category {
+        margin-left: 4px;
+        margin-right: 4px;
     }
 }
-
-@media (min-width: 992px) {
-    .category-btn {
-        margin-left: 20px;
+@media (max-width: 576px)
+{
+    #renderItem {
+        height: 350px;
     }
-    .vegi-btn, .category-btn {
+    .nav {
+        width: 100%;
+    }
+}
+@media (min-width: 992px) {
+    .category {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    .category {
         font-size: 25px;
+    }
+    .nav {
+        width: 90%;
     }
 }
 
@@ -145,6 +205,10 @@ h2 span {
     height: 400px;
 }
 
+#recipeTitle {
+    color: rgba(218, 156, 143, 0.918);
+}
+
 
 .recipeSearch-btn{
     border: 1px solid rgba(255, 255, 255, 0.363);
@@ -157,19 +221,22 @@ h2 span {
 }
 
 .step-btn {
-    background: rgb(57,131,066);
-    color: white;
+    background: rgb(233, 208, 203);
+    color: rgb(66, 65, 65);
     border-radius: 2rem;
 }
 
 .step-btn:hover{
     background: none;
-    color: rgb(57,131,066);
-    border: 2px solid rgb(57,131,066);
+    color: rgb(233, 208, 203);
+    border: 2px solid rgb(233, 208, 203);
 }
 
 @media (max-width: 767px) {
     .recipe-image {
+        text-align: center;
+    }
+    #recipeResult {
         text-align: center;
     }
 }

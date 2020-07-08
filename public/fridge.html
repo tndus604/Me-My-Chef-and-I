@@ -24,9 +24,9 @@
   <!-- Navbar -->
   <nav class="navbar flex-column">
     <a class="navbar-brand text-center" href="index.html" style="font-size: 50px; padding-top: 30px; padding-bottom: 30px;">Me MyChef & I</a>
-      <ul class="nav justify-content-center" style="border-top: 1px black solid; border-bottom: 1px black solid">
+      <ul class="nav justify-content-center menu-list" style="border-top: 1px black solid; border-bottom: 1px black solid">
         <li class="nav-item">
-          <a class="nav-link active" href="index.html">Home</a>
+          <a class="nav-link" href="index.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="fridge.html">Ingredients</a>
@@ -41,10 +41,11 @@
   <div class="row text-center">
     <div class="col-12 col-md-6 text-center">
       <div class="row">
-        <div class="col-12">
-              <form class="ingredient-input">
+
+        <div class="col-12 ingredient-input">
+              <form class="">
                 <div class="form-group">
-                  <label for="foodInfo">Insert New Ingredient</label>
+                  <label class="input-title" for="foodInfo">Insert New Ingredient</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <select class="form-control" id="category">
@@ -70,31 +71,29 @@
                 <button class="btn submitIngreBtn" type="submit" onclick="addItem(event)">Submit</button>
               </form>
         </div>
-        <!-- https://cdn.onlinewebfonts.com/svg/img_19587.png -->
+
         <div class="col-12 btn-row mt-3 mb-3">
-        <button type="button vegi-btn" class="btn vegi-btn" onclick="itemList(category='vegetable')"><i class="fas fa-carrot"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='fruit')"><i class="fas fa-apple-alt"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='dairy')"><i class="fas fa-cheese"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='meat')"><i class="fas fa-drumstick-bite"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='seafood')"><i class="fas fa-fish"></i></button>
-        <button type="button" class="btn category-btn" onclick="itemList(category='others')"><i class="fas fa-shopping-basket"></i></button>
+          <button type="button" class="btn category vegi-btn" onclick="itemList(category='vegetable')"><i class="fas fa-carrot"></i></button>
+          <button type="button" class="btn category fruit-btn" onclick="itemList(category='fruit')"><i class="fas fa-apple-alt"></i> </button>
+          <button type="button" class="btn category dairy-btn" onclick="itemList(category='dairy')"><i class="fas fa-cheese"></i></button>
+          <button type="button" class="btn category meat-btn" onclick="itemList(category='meat')"><i class="fas fa-drumstick-bite"></i></button>
+          <button type="button" class="btn category seafood-btn" onclick="itemList(category='seafood')"><i class="fas fa-fish"></i></button>
+          <button type="button" class="btn category others-btn" onclick="itemList(category='others')"><i class="fas fa-shopping-basket"></i></button>
         </div>
       </div>
 
-        <div class="row" id="renderItem">
-          
+        <div class="row overflow-auto item-by-category" id="renderItem">
         </div>
     </div>
 
     <div class="col-12 col-md-6 text-center">
       <!-- title -->
-      <h2>Your Fridge</h2>
+      <h2 class="yourFridge"><span id="fridge-title">Your Fridge</span></h2>
       <!-- Fridge List -->
-      <div class="container" style="border: 1px solid black">
         <div class="row" id='renderFridge'>
 
         </div>
-      </div>
+
     </div>
   </div>
 </div>
