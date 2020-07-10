@@ -16,10 +16,13 @@ Me MyChef and I is web application designed to offer users delicous recipes base
 >>>>>>> master
 ## Demo
 ### Heroku URL
-[Click Here to checkout a deployed application](add links here)
+[Click Here to checkout a deployed application](https://lit-badlands-54539.herokuapp.com/)
 
 ### Screenshots
-![Me Mychef and I](addscreenshotshere.png)
+![Me Mychef and I](./public/assets/image/screenshot-browser.png)
+![Mobile-Main](./public/assets/image/mobile-main.png)
+![Mobile-Ingredients](./public/assets/image/mobile-ingredients.png)
+![Mobile-Recipe](./public/assets/image/mobile-recipe.png)
 
 ## Installation
 ### Local application 
