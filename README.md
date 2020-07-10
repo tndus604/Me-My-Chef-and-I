@@ -8,12 +8,8 @@
 - [License](#license)
 
 ## Description
-<<<<<<< HEAD
-Me MyChef and I is web application designed to offer users delicous recipes based on what food they have in their home fridge. The web app uses API'S from spoonacular.com, which has 2600+ indgredients and 360k+ recipes. To get started, users simply click on the "Check Your Fridge" icon. From there, you can view, add or remove food from your fridge. It will automatically save, which makes it easy to update and also delete if food has gone bad. Once your fridge is up to date, click on the "Find Recipe" icon and recipes from spoonacular appear for the user, based on the updated fridge.   
-=======
 'Me MyChef & I' is web application designed to offer users delicous recipes based on what food they have in their home fridge. The web app uses API'S from spoonacular.com, which has 2600+ indgredients and 360k+ recipes. This application will help users to simply visualize ingredients in the fridge and organize and make changes easily. To get started, users simply click on the "Check Your Fridge" icon. From there, you can view, add or remove food from your fridge. It will automatically save, which makes it easy to update and also delete if food has gone bad. Once your fridge is up to date, click on the "Find Recipe" icon and recipes from spoonacular appear for the user, based on the updated fridge.
 
->>>>>>> master
 ## Demo
 ### Heroku URL
 [Click Here to checkout a deployed application](https://lit-badlands-54539.herokuapp.com/)
