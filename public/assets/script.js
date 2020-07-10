@@ -1,20 +1,3 @@
-// function checkFridge() {
-//     var fridgeItems = document.getElementById("fridgeItems");
-//     var openFridge = document.getElementById("openFridge");
-//     var closeFridge = document.getElementById("closeFridge");
-//     fridgeItems.style.display = "block";
-//     openFridge.style.display = "block";
-//     closeFridge.style.display = "none";
-// }
-
-/* unlike node where we can pull in packages with npm, or react, for normal
-    webpages, we can use a cool resource called unpkg from the html page, so
-    in this example we use the moment npm package on both the server & client side */
-
-/*
-    note how we wrap our api fetch in this function that allows us to do some
-    additional error / message handling for all API calls...
-*/
 async function apiCall( url, method='get', data={} ){
     let settings = {
         method,
@@ -30,6 +13,7 @@ async function apiCall( url, method='get', data={} ){
     return result
 }
 
+// getting ingredient info by category
 async function itemList( category='' ) {
     const itemList = await apiCall('/api/food' + (category ? `/${category}` : ''))
     console.log(`[itemList] category=${category}`, itemList)
@@ -40,53 +24,14 @@ async function itemList( category='' ) {
     itemList.forEach( function(data) {
         renderItem.innerHTML += `
         <div class="col-4">
-        <button class="btn" onclick="addToFridge(this)" id="${data.id}" name="${data.item}" is_rotten="${data.is_rotten}">
+        <a class="btn" onclick="addToFridge(this)" id="${data.id}" name="${data.item}" is_rotten="${data.is_rotten}">
         <img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
         <p>${data.item}</p>
-        </button>
+        </a>
         </div>
         `
     })
 }
-
-async function addItem(event){
-    event.preventDefault();
-    console.log(`additem will begins`)
-
-async function displayFridgeList (){
-    const getResponse = await apiCall('/api/fridge');
-    var renderFridge = document.querySelector('#renderFridge');
-    getResponse.forEach( function(data) {
-        renderFridge.innerHTML += `
-		<div class="col-6">
-			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<div>${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
-		</div>
-    `
-    })
-}
-async function addToFridge(data){
-    const fridgeItem = {
-        id: data.id,
-        item: data.name
-    }
-    console.log(fridgeItem);
-    const savedResponse = await apiCall('/api/food', 'put', fridgeItem);
-    console.log('saveResponse: ', savedResponse );
-
-    var renderFridge = document.querySelector('#renderFridge');
-    const getResponse = await apiCall('/api/fridge')
-    renderFridge.innerHTML = ''
-    getResponse.forEach( function(data) {
-        renderFridge.innerHTML += `
-		<div class="col-6">
-			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
-			<div${data.item} <button class="btn btn-danger"><i class="fa fa-trash"></i></button></div>
-		</div>
-        `
-    })
-}
-
 
 async function addItem(event) {
 	event.preventDefault()
@@ -116,17 +61,42 @@ async function addItem(event) {
 }
 
 
-
-    var fridgeIngredient = document.querySelector('#fridge-ingredient');
-    const getResponse = await apiCall('/api/fridge')
-    fridgeIngredient.innerHTML = ''
+// Display items in FRIDGE
+async function displayFridgeList (){
+    const getResponse = await apiCall('/api/fridge');
+	var renderFridge = document.querySelector('#renderFridge');
+	renderFridge.innerHTML = '';
     getResponse.forEach( function(data) {
-        fridgeIngredient.innerHTML += 
-        `
-            <img src="${data.image_url}" /><span>${data.item}</span>
-        `
+        renderFridge.innerHTML += `
+		<div class="col-4">
+			<img src="${data.image_url}" style="height: 70px; border-radius: 50%;">
+			<p>${data.item} <button class="delete-btn" onclick="removeItem(${data.id})"><i class="fa fa-trash"></i></button></p>
+		</div>
+    `
     })
 }
+
+// Add Ingredients to Fridge
+async function addToFridge(data){
+    const fridgeItem = {
+        id: data.id,
+        item: data.name
+    }
+    console.log(fridgeItem);
+    const savedResponse = await apiCall('/api/food', 'put', fridgeItem);
+    console.log('saveResponse: ', savedResponse );
+	
+	displayFridgeList();
+}
+
+// REMOVE ITEMS FROM FRIDGE
+async function removeItem(id){
+	console.log(`removing item ${id}`)
+	const deleteResponse = await apiCall( `/api/fridge/${id}`, 'delete');
+	console.log('[foodDeleted] ', deleteResponse )
+	displayFridgeList ();
+}
+
 // ------------------------Spoonacular API-------------------------------
 
 function showData() {
@@ -152,8 +122,8 @@ function showData() {
 				<img class="recipeFood-image" src="${response[i].image}">
 			</div>
 			<div class="col-sm-12 col-md-6 col-lg-8">
-				<p><strong>${response[i].title}</strong>
-				<br>Missing Ingredients:</p>
+				<h5><strong id="recipeTitle">${response[i].title}</strong></h5>
+				<p>Missing Ingredients:</p>
 				<ul>
 					${response[i].missedIngredients[0] ? `<li>${response[i].missedIngredients[0].name}` : ``}
 					${response[i].missedIngredients[1] ? `<li>${response[i].missedIngredients[1].name}` : ``}
